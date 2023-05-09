@@ -1,6 +1,6 @@
 'use client';
 
-import { Color } from '@/service/colors';
+import { Color } from '@/service/1200colors';
 import { useEffect, useState } from 'react';
 import { useSelectedColor } from '../context/SelectedColorContext';
 import ChipModalDetail from './ChipModalDetail';
@@ -15,7 +15,8 @@ type Props = {
 export default function ColorChip({ color }: Props) {
   const { selectedList, removeColor, insertColor } = useSelectedColor();
   const state =
-    selectedList.find(select => select.id === color.id) === undefined
+    selectedList.find(select => select.samwha_code === color.samwha_code) ===
+    undefined
       ? false
       : true;
 
@@ -36,12 +37,12 @@ export default function ColorChip({ color }: Props) {
     const color__value = `#${color.HEX}`;
 
     const divElement = document.getElementById(
-      `${color.page_code}`
+      `${color.samwha_code}`
     )! as HTMLDivElement;
     divElement.style.backgroundColor = color__value;
 
     const selectedDivElement = document.getElementById(
-      `selected_${color.page_code}`
+      `selected_${color.samwha_code}`
     )! as HTMLDivElement;
 
     if (state) {
@@ -57,11 +58,11 @@ export default function ColorChip({ color }: Props) {
   return (
     <>
       <button
-        id={`${color.page_code}`}
+        id={`${color.samwha_code}`}
         className={`w-[72px] h-[72px] relative hover:scale-105 duration-200`}
         onClick={handleClick}
       >
-        <div id={`selected_${color.page_code}`}></div>
+        <div id={`selected_${color.samwha_code}`}></div>
       </button>
 
       {openModal && (

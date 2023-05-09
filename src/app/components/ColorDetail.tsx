@@ -1,4 +1,4 @@
-import { Color } from '@/service/colors';
+import { Color } from '@/service/1200colors';
 import BookmarkIcon from './ui/icons/BookmarkIcon';
 
 export default function ColorDetail({
@@ -23,15 +23,17 @@ export default function ColorDetail({
           PDF로 다운로드
         </button>
       </div>
-      <div id={`${color.id}`} className='flex flex-row'>
+      <div id={`${color.samwha_code}`} className='flex flex-row'>
         <div
-          id={`?_${color.page_code}`}
+          id={`?_${color.samwha_code}`}
           className='basis-1/2 rounded-lg mx-2'
         ></div>
         <div className='basis-1/2 mx-2 flex flex-col'>
           <div className='basis-1/2'>
             <div className='flex flex-col'>
-              <strong className='text-xl mb-2'>SH {`${color.id}`}</strong>
+              <strong className='text-xl mb-2'>
+                SH {`${color.samwha_code}`}
+              </strong>
               <table className='text-left w-3/5'>
                 <tbody>
                   <tr>
@@ -52,7 +54,7 @@ export default function ColorDetail({
                   </tr>
                   <tr>
                     <th>CMYK</th>
-                    <td className='text-slate-500'>{`${color.CMYK_C} ${color.CMYK_M} ${color.CMYK_Y} ${color.CMYK_K}`}</td>
+                    <td className='text-slate-500'>{`${color.C} ${color.M} ${color.Y} ${color.K}`}</td>
                   </tr>
                   <tr>
                     <th>Lab</th>

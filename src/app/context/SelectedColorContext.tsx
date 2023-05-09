@@ -1,6 +1,6 @@
 'use client';
 
-import { Color } from '@/service/colors';
+import { Color } from '@/service/1200colors';
 import { createContext, useContext, useEffect, useState } from 'react';
 
 import {
@@ -43,7 +43,11 @@ export default function SelectedColorProvider({ children }: Props) {
 
   // 이거는 팔레트 싱크 안맞음
   const removeColor = (selectedColor: Color) => {
-    setSelectedList(selectedList.filter(prev => prev.id !== selectedColor.id));
+    setSelectedList(
+      selectedList.filter(
+        prev => prev.samwha_code !== selectedColor.samwha_code
+      )
+    );
     removeDataAtStorage(selectedColor);
   };
 

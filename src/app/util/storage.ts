@@ -1,4 +1,5 @@
-import { Color } from '@/service/colors';
+import { Color } from '@/service/1200colors';
+
 const STORAGEKEY = 'Color1200';
 
 export function getDataAtStorage(): Color[] {
@@ -19,6 +20,8 @@ export function insertDataAtStorage(c: Color) {
 
 export function removeDataAtStorage(c: Color) {
   let selectedArr = getDataAtStorage();
-  selectedArr = selectedArr.filter(color => color.id !== c.id);
+  selectedArr = selectedArr.filter(
+    color => color.samwha_code !== c.samwha_code
+  );
   setDataAtStorage(selectedArr);
 }
