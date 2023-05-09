@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.selected {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 72px;
+  height: 72px;
+  background-image: url(./resource/swatches-selected.svg);
+}
+
+.out_gradient {
+  box-shadow: 0px 9px 33px 15px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0px 9px 33px 15px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 9px 33px 15px rgba(0, 0, 0, 0.35);
+}

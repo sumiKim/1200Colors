@@ -1,6 +1,12 @@
 import './globals.css';
 import { Noto_Sans_KR } from 'next/font/google';
-const noto_sans = Noto_Sans_KR({ weight: ['400', '500', '700'] });
+import TopHeader from './components/TopHeader';
+import SelectedColorProvider from './context/SelectedColorContext';
+
+const noto_sans = Noto_Sans_KR({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+});
 
 export const metadata = {
   title: '1200_colors',
@@ -13,8 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body className={noto_sans.className}>{children}</body>
+    <html lang='en' className={noto_sans.className}>
+      <body className='h-full' suppressHydrationWarning={true}>
+        <TopHeader />
+        <SelectedColorProvider>{children}</SelectedColorProvider>
+        <div id='portal' />
+      </body>
     </html>
   );
 }
