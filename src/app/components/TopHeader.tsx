@@ -10,7 +10,7 @@ const mainMenu = [
     name: '컬러',
   },
   {
-    href: '/colorscheme',
+    href: '/colorschema',
     name: '배색',
   },
   {

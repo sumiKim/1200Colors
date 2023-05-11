@@ -15,16 +15,8 @@ export type Color = {
   HVC_H: string;
   HVC_V: number;
   HVC_C: number;
-  Pantone: string; // 19-0205    15-6304
+  Pantone: string;
 };
-
-// fetch가 아닌 것, 호출 중복하고 싶을 때 -> 캐시 설정.
-// export const getAllColors = cache( async () => {
-//     console.log('getAllColors');
-//     const filePath = path.join(process.cwd(), 'data','color','1400.json');
-//     return readFile(filePath, 'utf-8')
-//     .then<Color[]>(JSON.parse);
-// })
 
 export async function getAllColors(): Promise<Color[]> {
   const filePath = path.join(process.cwd(), 'data', 'color', '1400.json');

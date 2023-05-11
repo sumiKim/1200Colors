@@ -1,23 +1,32 @@
 'use client';
 
+import { useState } from 'react';
 import { useSelectedColor } from '../context/SelectedColorContext';
-import ChipMobile from './ChipMobile';
+import ChipSimple from './ui/colorchips/ChipSimple';
 
 export default function MyColorBottom() {
   const { selectedList } = useSelectedColor();
+  const [open, setOpen] = useState(true);
 
-  console.log(`${selectedList.length == 0 ? 'o' : 'x'}`);
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   return (
-    <div className='block lg:hidden fixed bottom-0 w-full h-fit'>
-      <div className='h-9 rounded-t-3xl pl-8 font-bold text-lg bg-white out_gradient flex items-center'>
+    <div className='block lg:hidden fixed bottom-0 w-full h-fit px-1'>
+      <div
+        className='h-9 rounded-t-3xl pl-8 font-bold text-lg bg-white out_gradient flex items-center'
+        onClick={handleClick}
+      >
         My Color
       </div>
-      {selectedList.length == 0 && <div className='h-52 bg-black'>hi</div>}
-      <ul className='flex w-full overflow-auto border-t-2 bg-white'>
+      {selectedList.length == 0 && (
+        <div className={`h-52 bg-white ${open ? 'block' : 'hidden'}`}></div>
+      )}
+      <ul className='flex w-full overflow-auto border-t-2 bg-white ps-1 gap-x-1'>
         {selectedList.map(color => (
-          <li key={color.id}>
-            <ChipMobile color={color} />
+          <li key={color.samwha_code}>
+            <ChipSimple color={color} type={'mobile'} />
           </li>
         ))}
       </ul>

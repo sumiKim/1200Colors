@@ -1,3 +1,4 @@
+import MyColorBottom from '../components/MyColorBottom';
 import MyColorLeft from '../components/MyColorLeft';
 import PageTitle from '../components/PageTitle';
 
@@ -11,6 +12,7 @@ export default function ColorLayout({
       <PageTitle titleName='배색' badgeView={false} />
       <MyColorLeft />
       {children}
+      <MyColorBottom />
     </>
   );
 }

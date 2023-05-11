@@ -6,7 +6,7 @@ export type Color = {
   page_num?: string;
   samwha_code: string;
   color_group?: string;
-  munsell?: string;
+  munsell: string;
   color?: string;
   HVC_H: string;
   HVC_V: string;
@@ -57,8 +57,10 @@ async function csvToJson() {
 }
 
 export async function getAll1200Colors() {
-  console.log('getAll1200Colors');
   return await csvToJson().then<Color[]>(JSON.parse);
-  //   console.log(a);
-  //   return
+}
+
+export async function getColorInfo(key: string) {
+  const colors = await getAll1200Colors();
+  return colors.filter(color => color.samwha_code === key).shift();
 }

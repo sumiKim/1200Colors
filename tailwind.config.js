@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         brand: '#d31239',
+        samwha_textdarkgray: '#6b7280',
         samwha_textgray: '#b4bbc3',
         samwha_lightgray: '#e5e6eb',
         test_a: '#e8bd36',

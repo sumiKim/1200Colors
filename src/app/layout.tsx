@@ -2,6 +2,7 @@ import './globals.css';
 import { Noto_Sans_KR } from 'next/font/google';
 import TopHeader from './components/TopHeader';
 import SelectedColorProvider from './context/SelectedColorContext';
+import SWRConfigContext from './context/SWRConfigContext';
 
 const noto_sans = Noto_Sans_KR({
   weight: ['400', '500', '700'],
@@ -22,7 +23,9 @@ export default function RootLayout({
     <html lang='en' className={noto_sans.className}>
       <body className='h-full' suppressHydrationWarning={true}>
         <TopHeader />
-        <SelectedColorProvider>{children}</SelectedColorProvider>
+        <SelectedColorProvider>
+          <SWRConfigContext>{children}</SWRConfigContext>
+        </SelectedColorProvider>
         <div id='portal' />
       </body>
     </html>
