@@ -12,7 +12,7 @@ export default function PageTitle({ titleName, badgeView }: Props) {
       <div className='hidden lg:block w-56 font-bold text-2xl text-right pt-6 pr-10'>
         {titleName}
       </div>
-      <div className='flex flex-col justify-center items-center grow'>
+      <div className='flex flex-col max-w-xs sm:max-w-md md:max-w-3xl lg:max-w-7xl mx-auto justify-center'>
         {/* 중앙 정렬을 위해 한 번 더 감싸기 */}
         {/* <div className='w-full'> */}
         <SearchBox />
