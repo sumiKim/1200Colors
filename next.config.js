@@ -3,6 +3,9 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-}
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

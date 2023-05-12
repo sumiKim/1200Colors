@@ -1,10 +1,14 @@
 'use client';
+
 import DetailHeader from '@/app/components/DetailHeader';
 import NotFound from './not-found';
 import useSWR from 'swr';
 import ColorSchemaSquare from '@/app/components/ui/colorchips/ColorSchemaSquare';
-import { ColorSchema } from '@/service/1200colorschemas';
 import ChipCustom from '@/app/components/ui/colorchips/ChipCustom';
+import { useEffect, useState } from 'react';
+import ColorPaletteOverlay from '@/app/components/ColorPaletteOverlay';
+import { ColorSchema } from '@/service/type';
+import { SchemaArea, useCustomSchema } from '@/app/context/CustomSchemaContext';
 
 type Props = { params: { id: string } };
 
@@ -13,12 +17,25 @@ export default function CustomSchemapage({ params: { id } }: Props) {
     NotFound();
   }
 
-  // id로 배색의 상세정보 가져오기
-  const {
-    data: schema,
-    isLoading,
-    error,
-  } = useSWR<ColorSchema>(`/api/schema_detail/${id}`);
+  const { data, isLoading, error } = useSWR<ColorSchema>(
+    `/api/schema_detail/${id}`
+  );
+
+  const { schema, initColor, handleChangeArea } = useCustomSchema();
+
+  const [openEditArea, setOpenEditArea] = useState(false);
+  const handleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const targetValue = e.currentTarget.value as SchemaArea;
+    handleChangeArea(targetValue);
+    setOpenEditArea(!openEditArea);
+  };
+
+  useEffect(() => {
+    // setNewSchema(data);
+    if (data !== undefined) {
+      initColor({ ...data });
+    }
+  }, [data]);
 
   return (
     <section className='max-w-screen-lg mx-auto flex flex-col p-5'>
@@ -27,10 +44,32 @@ export default function CustomSchemapage({ params: { id } }: Props) {
         <div className='basis-1/3'>
           {schema && <ColorSchemaSquare schema={schema} size={'large'} />}
         </div>
-        <div className='basis-2/3 flex flex-col justify-end'>
-          {schema && <ChipCustom color={schema.base} />}
-          {schema && <ChipCustom color={schema.accent} />}
-          {schema && <ChipCustom color={schema.secondary} />}
+        <div className='basis-2/3 flex flex-col justify-end relative'>
+          {schema && (
+            <ChipCustom
+              area={'base'}
+              color={schema.base}
+              handleEdit={handleEdit}
+            />
+          )}
+          {schema && (
+            <ChipCustom
+              area={'accent'}
+              color={schema.accent}
+              handleEdit={handleEdit}
+            />
+          )}
+          {schema && (
+            <ChipCustom
+              area={'secondary'}
+              color={schema.secondary}
+              handleEdit={handleEdit}
+            />
+          )}
+          <ColorPaletteOverlay
+            openEditArea={openEditArea}
+            handleClose={handleEdit}
+          />
         </div>
       </div>
     </section>
