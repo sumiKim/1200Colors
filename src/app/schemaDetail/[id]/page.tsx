@@ -3,9 +3,9 @@ import DetailHeader from '@/app/components/DetailHeader';
 import NotFound from './not-found';
 import useSWR from 'swr';
 import ColorSchemaSquare from '@/app/components/ui/colorchips/ColorSchemaSquare';
-import { ColorSchema } from '@/service/1200colorschemas';
 import ChipSchemaDetail from '@/app/components/ui/colorchips/ChipSchemaDetail';
 import Button from '@/app/components/ui/Button';
+import { ColorSchema } from '@/service/type';
 
 type Props = { params: { id: string } };
 

@@ -1,5 +1,5 @@
-import { Color } from '@/service/1200colors';
 import ColorInfo from '../../ColorInfo';
+import { Color } from '@/service/type';
 
 type Props = {
   color: Color;

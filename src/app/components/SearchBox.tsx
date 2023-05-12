@@ -2,10 +2,11 @@ import Button from './ui/Button';
 
 type Props = {
   dropdown?: boolean;
+  placeholder?: string;
 };
-export default function SearchBox({ dropdown = true }: Props) {
+export default function SearchBox({ dropdown = true, placeholder }: Props) {
   return (
-    <div className='flex flex-row mb-3 w-full lg:w-[800px] gap-1'>
+    <div className='flex flex-row w-full gap-1'>
       {/* dropdown */}
       {dropdown && (
         <div>
@@ -87,7 +88,7 @@ export default function SearchBox({ dropdown = true }: Props) {
       {/* search Box */}
       <input
         type='text'
-        placeholder='dd'
+        placeholder={placeholder}
         className='border-[1px] border-grey-100 focus:outline-none rounded px-2 grow bg-samwha_lightgray'
       ></input>
       {!dropdown && (

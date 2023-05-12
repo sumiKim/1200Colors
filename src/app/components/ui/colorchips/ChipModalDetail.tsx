@@ -1,11 +1,11 @@
 'use client';
 
 import { useSelectedColor } from '@/app/context/SelectedColorContext';
-import { Color } from '@/service/1200colors';
 import { useState } from 'react';
 import ColorInfo from '../../ColorInfo';
 import BookmarkFillIcon from '../icons/BookmarkFillIcon';
 import BookmarkIcon from '../icons/BookmarkIcon';
+import { Color } from '@/service/type';
 
 type Props = {
   color: Color;

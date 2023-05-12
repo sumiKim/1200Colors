@@ -1,25 +1,7 @@
 import { readFile } from 'fs/promises';
 import path from 'path';
-import { Color, getColorInfo } from './1200colors';
-
-type Obj = {
-  [key: string]: string;
-};
-
-// key가 string 이라는 것을 표현하고 싶다.
-type CsvColorSchema = {
-  [id: string]: string;
-  secondary: string;
-  accent: string;
-  base: string;
-};
-
-export type ColorSchema = {
-  id: string;
-  secondary: Color;
-  accent: Color;
-  base: Color;
-};
+import { getColorInfo } from './1200colors';
+import { Color, ColorSchema, CsvColorSchema, Obj } from './type';
 
 let DefaultColor = {
   id: 0,

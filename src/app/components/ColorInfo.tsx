@@ -1,4 +1,5 @@
-import { Color } from '@/service/1200colors';
+import { Color } from '@/service/type';
+
 type Props = {
   color: Color;
   type: 'color' | 'schema' | 'simple' | 'popup';

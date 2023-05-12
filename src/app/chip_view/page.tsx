@@ -1,4 +1,4 @@
-import { Color } from '@/service/1200colors';
+import { Color } from '@/service/type';
 import ChipModalDetail from '../components/ui/colorchips/ChipModalDetail';
 import ChipSimple from '../components/ui/colorchips/ChipSimple';
 import ChipDefault from '../components/ui/colorchips/ChipDefault';

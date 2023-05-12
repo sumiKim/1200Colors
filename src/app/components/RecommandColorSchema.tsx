@@ -1,7 +1,7 @@
 'use client';
 
-import { Color } from '@/service/1200colors';
-import { ColorSchema } from '@/service/1200colorschemas';
+import { Color } from '@/service/type';
+import { ColorSchema } from '@/service/type';
 import useSWR from 'swr';
 import ChipSimple from './ui/colorchips/ChipSimple';
 import ColorSchemaSquare from './ui/colorchips/ColorSchemaSquare';

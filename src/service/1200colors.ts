@@ -1,34 +1,6 @@
 import { readFile } from 'fs/promises';
+import { Color, colorObj } from './type';
 import path from 'path';
-
-export type Color = {
-  id: number;
-  page_num?: string;
-  samwha_code: string;
-  color_group?: string;
-  munsell: string;
-  color?: string;
-  HVC_H: string;
-  HVC_V: string;
-  HVC_C: string;
-  R: number;
-  G: number;
-  B: number;
-  HEX: string;
-  C: number;
-  M: number;
-  Y: number;
-  K: number;
-  'L*'?: string;
-  'a*'?: string;
-  'b*'?: string;
-  NCS?: string;
-  Pantone: string;
-};
-
-type colorObj = {
-  [key: string]: string;
-};
 
 async function csvToJson() {
   const filePath = path.join(process.cwd(), 'data', 'color', '1200colors.csv');

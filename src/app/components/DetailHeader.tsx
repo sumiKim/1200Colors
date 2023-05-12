@@ -1,13 +1,9 @@
 'use client';
 import { useState } from 'react';
 import { useSelectedColor } from '../context/SelectedColorContext';
-import BookmarkIcon from './ui/icons/BookmarkIcon';
 import DivideIcon from './ui/icons/DivideIcon';
 import HomeIcon from './ui/icons/HomeIcon';
-import PdfDownloadIcon from './ui/icons/PdfDownloadIcon';
-import useSWR from 'swr';
-import { Color } from '@/service/1200colors';
-import BookmarkFillIcon from './ui/icons/BookmarkFillIcon';
+import { Color } from '@/service/type';
 import Button from './ui/Button';
 
 type Props = {

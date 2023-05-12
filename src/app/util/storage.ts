@@ -1,4 +1,4 @@
-import { Color } from '@/service/1200colors';
+import { Color } from '@/service/type';
 
 const STORAGEKEY = 'Color1200';
 

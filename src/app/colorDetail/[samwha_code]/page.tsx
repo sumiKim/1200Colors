@@ -1,11 +1,12 @@
 'use client';
+
+import { Color } from '@/service/type';
 import ColorInfo from '@/app/components/ColorInfo';
 import DetailHeader from '@/app/components/DetailHeader';
 import RecommandColorSchema from '@/app/components/RecommandColorSchema';
 import NotFound from './not-found';
 import ColorSquare from '@/app/components/ui/colorchips/ColorSquare';
 import useSWR from 'swr';
-import { Color } from '@/service/1200colors';
 
 type Props = { params: { samwha_code: string } };
 

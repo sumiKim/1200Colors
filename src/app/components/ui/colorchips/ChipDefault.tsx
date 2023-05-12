@@ -1,6 +1,6 @@
 'use client';
 
-import { Color } from '@/service/1200colors';
+import { Color } from '@/service/type';
 import { useState } from 'react';
 import { useSelectedColor } from '../../../context/SelectedColorContext';
 import ChipModalDetail from './ChipModalDetail';

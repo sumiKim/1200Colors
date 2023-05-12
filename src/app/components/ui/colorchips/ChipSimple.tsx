@@ -1,5 +1,5 @@
-import { Color } from '@/service/1200colors';
 import Link from 'next/link';
+import { Color } from '@/service/type';
 
 type Prop = {
   color: Color;
@@ -61,8 +61,8 @@ export default function ChipSimple({ color, type }: Prop) {
       break;
     case 'simple':
       style = {
-        id: 'mobile',
-        wrap_style: 'flex flex-row h-10',
+        id: 'simple',
+        wrap_style: 'flex flex-row h-10 bg-white',
         div_style: 'w-10 h-10',
         info_style: {
           div: 'flex flex-col ms-2 justify-center',
