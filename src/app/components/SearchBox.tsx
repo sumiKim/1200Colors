@@ -13,7 +13,7 @@ export default function SearchBox({ dropdown = true, placeholder }: Props) {
           <button
             id='dropdownDefaultButton'
             data-dropdown-toggle='dropdown'
-            className='border-[1px] border-grey-100 text-black font-bold focus:outline-none rounded px-7 py-2.5 text-center inline-flex items-center justify-between'
+            className='border-[1px] border-grey-100 text-black font-bold focus:outline-none rounded px-3 py-1.5 md:px-5 text-center inline-flex items-center justify-between'
             type='button'
           >
             색상명
@@ -35,7 +35,7 @@ export default function SearchBox({ dropdown = true, placeholder }: Props) {
           </button>
           <div
             id='dropdown'
-            className='z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700'
+            className='z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700'
           >
             <ul
               className='py-2 text-sm text-gray-700 dark:text-gray-200'
