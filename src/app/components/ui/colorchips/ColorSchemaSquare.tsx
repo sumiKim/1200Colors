@@ -1,4 +1,4 @@
-import { ColorSchema } from '@/service/1200colorschemas';
+import { ColorSchema } from '@/service/type';
 import Link from 'next/link';
 type Props = {
   schema: ColorSchema;

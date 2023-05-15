@@ -1,8 +1,8 @@
 import {
-  ColorSchema,
   getAllData,
   getColorSchemaToCsvSchema,
 } from '@/service/1200colorschemas';
+import { ColorSchema } from '@/service/type';
 import ColorSchemaSquare from './ui/colorchips/ColorSchemaSquare';
 
 export default async function FeaturedColorSchemas() {

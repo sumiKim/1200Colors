@@ -108,7 +108,7 @@ export default function ChipViewPage() {
           <span className='text-xl font-extrabold  bg-pink-300'>
             ChipCustom
           </span>
-          <ChipCustom color={samplecolor} />
+          {/* <ChipCustom color={samplecolor} /> */}
         </div>
       </div>
       <div className='flex flex-row gap-3'>
