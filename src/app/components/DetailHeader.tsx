@@ -1,4 +1,8 @@
 'use client';
+
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
 import { useState } from 'react';
 import { useSelectedColor } from '../context/SelectedColorContext';
 import DivideIcon from './ui/icons/DivideIcon';
@@ -33,6 +37,112 @@ export default function DetailHeader({ color, title, subtitle }: Props) {
     setSelected(!selected);
   };
 
+  const handlePDFClick = () => {
+    let doc = new jsPDF({ putOnlyUsedFonts: true, orientation: 'portrait' });
+
+    autoTable(doc, {
+      theme: 'grid',
+      headStyles: {
+        halign: 'center',
+        fontSize: 25,
+        fillColor: [255, 255, 255],
+        textColor: [0, 0, 0],
+      },
+      tableWidth: 'wrap',
+      head: [[{ content: ``, colSpan: 3 }]],
+      columnStyles: { 0: { halign: 'center', fillColor: color?.HEX } },
+      body: [
+        [
+          {
+            content: [''],
+            rowSpan: 8,
+            styles: { halign: 'center', minCellWidth: 60, minCellHeight: 30 },
+          },
+          {
+            content: 'Samwha Code',
+            styles: { valign: 'middle' },
+          },
+          {
+            content: `SH ${color?.samwha_code}`,
+            styles: { valign: 'middle' },
+          },
+        ],
+        [
+          {
+            content: 'H V/C',
+            styles: { valign: 'middle' },
+          },
+          {
+            content: `${color?.munsell}`,
+            styles: { valign: 'middle' },
+          },
+        ],
+        [
+          {
+            content: 'L*a*b*',
+            styles: { valign: 'middle' },
+          },
+          {
+            content: `${color?.['L*']} / ${color?.['a*']} / ${color?.['b*']}`,
+            styles: { valign: 'middle' },
+          },
+        ],
+        [
+          {
+            content: 'RGB',
+            styles: { valign: 'middle' },
+          },
+          {
+            content: `${color?.R} / ${color?.G} / ${color?.B}`,
+            styles: { valign: 'middle' },
+          },
+        ],
+        [
+          {
+            content: 'CMYK',
+            styles: { valign: 'middle' },
+          },
+          {
+            content: `${color?.C} / ${color?.M} / ${color?.Y} / ${color?.K}`,
+            styles: { valign: 'middle' },
+          },
+        ],
+        [
+          {
+            content: 'HEX',
+            styles: { valign: 'middle' },
+          },
+          {
+            content: `#${color?.HEX}`,
+            styles: { valign: 'middle' },
+          },
+        ],
+        [
+          {
+            content: 'NCS',
+            styles: { valign: 'middle' },
+          },
+          {
+            content: `${color?.NCS}`,
+            styles: { valign: 'middle' },
+          },
+        ],
+        [
+          {
+            content: 'Pantone',
+            styles: { valign: 'middle' },
+          },
+          {
+            content: `${color?.Pantone}`,
+            styles: { valign: 'middle' },
+          },
+        ],
+      ],
+    });
+
+    doc.save(`SH_${color?.samwha_code}`);
+  };
+
   return (
     <div className='flex flex-col py-2'>
       {/* <h1 className='text-2xl font-bold py-2'>{title}</h1> */}
@@ -47,7 +157,7 @@ export default function DetailHeader({ color, title, subtitle }: Props) {
 
         {color && (
           <div className='flex gap-1'>
-            <Button icon={'pdf'} />
+            <Button icon={'pdf'} handleClick={handlePDFClick} />
             <Button
               icon={'bookmark'}
               selected={selected}
