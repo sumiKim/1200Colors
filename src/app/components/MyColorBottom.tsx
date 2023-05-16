@@ -9,6 +9,7 @@ export default function MyColorBottom() {
   const [open, setOpen] = useState(true);
 
   const handleClick = () => {
+    console.log('click');
     setOpen(!open);
   };
 
@@ -23,13 +24,15 @@ export default function MyColorBottom() {
       {selectedList.length == 0 && (
         <div className={`h-52 bg-white ${open ? 'block' : 'hidden'}`}></div>
       )}
-      <ul className='flex w-full overflow-auto border-t-2 bg-white ps-1 gap-x-1'>
-        {selectedList.map(color => (
-          <li key={color.samwha_code}>
-            <ChipSimple color={color} type={'mobile'} />
-          </li>
-        ))}
-      </ul>
+      {open && (
+        <ul className='flex w-full overflow-auto border-t-2 bg-white ps-1 gap-x-1'>
+          {selectedList.map(color => (
+            <li key={color.samwha_code}>
+              <ChipSimple color={color} type={'mobile'} />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
