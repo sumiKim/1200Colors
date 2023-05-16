@@ -5,9 +5,9 @@ import YoutubeIcon from './ui/icons/YoutubeIcon';
 
 export default function Footer() {
   return (
-    <footer className='footer flex flex-col lg:flex-row'>
-      <section className='flex flex-col pt-10 h-64 ps-6 lg:ps-64 lg:basis-2/3 text-black lg:text-white gap-6 bg-white lg:bg-black'>
-        <p className='text-4xl text-brand font-semibold'>
+    <footer className='footer flex flex-col lg:flex-row bg-[#333333]'>
+      <section className='flex flex-col pt-10 h-64 ps-6 lg:ps-64 lg:basis-2/3 text-[#333333] lg:text-white gap-6 bg-white lg:bg-[#333333]'>
+        <p className='text-3xl md:text-4xl text-brand font-semibold'>
           페인트를 넘어,<br></br>
           보이지 않는 가치를 위해.
         </p>
@@ -17,7 +17,7 @@ export default function Footer() {
           <span>아름다움</span>
         </div>
       </section>
-      <section className='flex flex-col ps-6 pt-10 h-64 lg:basis-1/3 text-samwha_textgray text-xs bg-black'>
+      <section className='flex flex-col ps-6 pt-10 h-64 lg:basis-1/3 text-[#8c8c8c] text-xs bg-[#333333]'>
         <div>
           <p>Technical Service Center</p>
           <p className='text-lg text-white font-semibold'>1544-5357</p>
