@@ -37,7 +37,7 @@ async function csvToJson() {
   );
 
   return readFile(filePath, 'utf-8').then(data => {
-    const dataArr = data.split('\r\n');
+    const dataArr = data.split('\n');
 
     const jsonArray: any[] = [];
     const keys = dataArr[0].split(',');
