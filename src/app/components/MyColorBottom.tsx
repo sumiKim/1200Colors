@@ -13,7 +13,7 @@ export default function MyColorBottom() {
   };
 
   return (
-    <div className='block lg:hidden fixed bottom-0 w-full h-fit px-1'>
+    <div className='block lg:hidden fixed bottom-0 w-full h-fit px-1 z-20'>
       <div
         className='h-9 rounded-t-3xl pl-8 font-bold text-lg bg-white out_gradient flex items-center'
         onClick={handleClick}

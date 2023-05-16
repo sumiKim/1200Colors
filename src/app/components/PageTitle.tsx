@@ -8,7 +8,7 @@ type Props = {
 
 export default function PageTitle({ titleName, badgeView }: Props) {
   return (
-    <div className='relative z-10 w-full h-32 flex bg-white border-b-2'>
+    <div className='relative z-30 w-full h-32 flex bg-white border-b-2'>
       <div className='hidden lg:block w-56 font-bold text-2xl text-right pt-6 pr-10'>
         {titleName}
       </div>
