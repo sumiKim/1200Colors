@@ -24,7 +24,7 @@ export default function ColorDetailPage({ params: { samwha_code } }: Props) {
   return (
     <section className='max-w-screen-lg mx-auto flex flex-col p-5'>
       {color && <DetailHeader color={color} title='컬러' subtitle='컬러정보' />}
-      <div className='w-full flex flex-col md:items-stretch md:flex-row gap-10'>
+      <div className='w-full flex flex-col md:items-stretch md:flex-row gap-5'>
         <div className='basis-1/2 w-full'>
           {color && <ColorSquare color={color} />}
         </div>

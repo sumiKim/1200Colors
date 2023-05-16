@@ -355,7 +355,7 @@ export default function ColorDetailPage({ params: { id } }: Props) {
               handleClick={handleCustomColor}
             />
           </div>
-          <div>
+          <div className='flex flex-col gap-2'>
             {schema && <ChipSchemaDetail color={schema.base} />}
             {schema && <ChipSchemaDetail color={schema.accent} />}
             {schema && <ChipSchemaDetail color={schema.secondary} />}

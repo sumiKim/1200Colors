@@ -51,7 +51,7 @@ export default function ColorInfo({ color, type }: Props) {
       <div
         className={
           type === 'schema' || type === 'popup'
-            ? 'flex flex-row items-end w-full justify-between lg:justify-normal mb-1'
+            ? 'flex flex-row items-end w-full justify-between lg:justify-normal'
             : 'flex flex-col'
         }
       >
