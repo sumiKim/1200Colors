@@ -3,8 +3,8 @@ import MainBanner from './components/MainBanner';
 import TopImage from './resource/image/1.jpg';
 import BottomImage from './resource/image/2.png';
 import Banner1 from './resource/image/3.jpg';
-import Banner2 from './resource/image/4.jpg';
-import Banner3 from './resource/image/5.jpg';
+import Banner2 from './resource/image/4.jpeg';
+import Banner3 from './resource/image/5.jpeg';
 export default async function HomePage() {
   return (
     <div className='flex flex-col'>
