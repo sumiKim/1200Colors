@@ -77,7 +77,7 @@ export default function HomePage() {
             <p className='text-xs md:text-md font-thin'>
               자사 컬러북인 &apos;SAMHWA-NCS COLLECTION&apos;
               <br></br>
-              &apos;SAMHWA-NCS COLOR MASTER 950&apos;과 &apos;600&apos;
+              &apos;SAMHWA-NCS COLOR MASTER 950과 600&apos;
               <br></br>의 베스트 컬러, 시장수요가 많은 스테디 컬러를 <br></br>
               선별하고 각 분야의 트랜드가 반영된 신규컬러를 <br></br>
               추가하여 1200컬러로 구성하였습니다.
