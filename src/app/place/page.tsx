@@ -30,11 +30,13 @@ export default function PlacePage() {
           <div></div>
         </div>
       </div>
-      <div className='w-full block lg:hidden'>
+      <ul className='w-full block lg:hidden'>
         {placeNav.map(item => (
-          <PlaceNavItem item={item} useType={'mobile'} />
+          <li key={`mobile_${item.id}`}>
+            <PlaceNavItem item={item} useType={'mobile'} />
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   );
 }

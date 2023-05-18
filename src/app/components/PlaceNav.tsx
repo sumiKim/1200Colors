@@ -16,7 +16,9 @@ export default function PlaceNav({ placeNav }: Props) {
   return (
     <ul>
       {placeNav.map(item => (
-        <PlaceNavItem item={item} useType={'web'} />
+        <li key={`web_${item.id}`}>
+          <PlaceNavItem item={item} useType={'web'} />
+        </li>
       ))}
     </ul>
   );
