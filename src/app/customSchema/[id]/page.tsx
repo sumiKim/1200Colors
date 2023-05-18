@@ -17,8 +17,8 @@ export default function CustomSchemapage({ params: { id } }: Props) {
     NotFound();
   }
 
-  const { data, isLoading, error } = useSWR<ColorSchema>(
-    `/api/schema_detail/${id}`
+  const { data, isLoading, error } = useSWR(
+    `http://localhost:3001/1200color/getColorSchemeById/${id}`
   );
 
   const { schema, initColor, handleChangeArea } = useCustomSchema();
@@ -32,11 +32,13 @@ export default function CustomSchemapage({ params: { id } }: Props) {
 
   useEffect(() => {
     if (data !== undefined) {
-      initColor({ ...data });
+      const defaultSchema: ColorSchema = data?.[0];
+      initColor({ ...defaultSchema });
     }
   }, [data]);
 
   return (
+    // <></>
     <section className='max-w-screen-lg mx-auto flex flex-col p-5'>
       <DetailHeader title='배색' subtitle='배색만들기' />
       <div className='mx-auto lg:w-full flex flex-col lg:flex-row gap-2'>
