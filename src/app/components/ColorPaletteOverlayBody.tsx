@@ -24,7 +24,7 @@ export default function ColorPaletteOverlayBody({ activeTab }: Props) {
           </div>
 
           {colors && (
-            <ul className='flex flex-col'>
+            <ul className='flex flex-col gap-1'>
               {colors.map(color => (
                 <li key={color.samwha_code}>
                   <ChipForOverlay color={color} />

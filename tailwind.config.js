@@ -9,12 +9,13 @@ module.exports = {
     extend: {
       colors: {
         brand: '#d31239',
-        samwha_textdarkgray: '#6b7280',
-        samwha_textgray: '#b4bbc3',
-        samwha_lightgray: '#e5e6eb',
+        samwha_lightgray: '#b4bbc3',
         test_a: '#e8bd36',
         test_b: '#36aae8',
         test_c: '#9736e8',
+        sh_text64: '#404040',
+        sh_text89: '#595959',
+        sh_text126: '#7E7E7E',
       },
     },
   },

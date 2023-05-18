@@ -14,7 +14,7 @@ export default function ChipForOverlay({ color }: Prop) {
   };
   return (
     <div
-      className='flex flex-row w-full bg-white hover:bg-gray-200 p-1 mt-1'
+      className='flex flex-row w-full bg-white hover:bg-gray-200 p-1 mt-1 gap-1'
       onClick={handleClick}
     >
       <div
@@ -28,10 +28,10 @@ export default function ChipForOverlay({ color }: Prop) {
           'flex flex-col lg:flex-row ms-2 lg:items-center justify-center lg:gap-1'
         }
       >
-        <p className={'text-md font-semibold text-samwha_textdarkgray'}>
+        <p className={'text-md font-semibold text-sh_text64'}>
           SH {samwha_code}
         </p>
-        <p className={'text-xs md:text-sm text-samwha_textdarkgray'}>
+        <p className={'text-xs md:text-sm text-sh_text126'}>
           {HVC_H} {HVC_V}/{HVC_C}
         </p>
       </div>

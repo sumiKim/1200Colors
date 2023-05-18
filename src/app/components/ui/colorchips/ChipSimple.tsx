@@ -42,8 +42,8 @@ export default function ChipSimple({ color, type }: Prop) {
         div_style: 'w-full h-36',
         info_style: {
           div: 'flex flex-col p-2 bg-white',
-          samwha_id: 'text-lg font-bold',
-          munsell: 'text-md text-gray-400',
+          samwha_id: 'text-lg font-bold text-sh_text64',
+          munsell: 'text-md text-sh_text126',
         },
       };
       break;
@@ -54,8 +54,8 @@ export default function ChipSimple({ color, type }: Prop) {
         div_style: 'w-32 h-32',
         info_style: {
           div: 'flex flex-col p-2 bg-white',
-          samwha_id: 'text-lg font-bold',
-          munsell: 'text-md text-gray-400',
+          samwha_id: 'text-lg font-bold text-sh_text64',
+          munsell: 'text-md text-sh_text126',
         },
       };
       break;
@@ -66,8 +66,8 @@ export default function ChipSimple({ color, type }: Prop) {
         div_style: 'w-10 h-10',
         info_style: {
           div: 'flex flex-col ms-2 justify-center',
-          samwha_id: 'text-md font-semibold text-samwha_textdarkgray',
-          munsell: 'text-xs md:text-sm text-samwha_textdarkgray',
+          samwha_id: 'text-md font-semibold text-sh_text64',
+          munsell: 'text-xs md:text-sm text-sh_text126',
         },
       };
       break;

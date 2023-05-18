@@ -49,7 +49,7 @@ export default function ColorPaletteOverlay({
               <button
                 className={`w-full py-1 rounded-t-lg text-sm font-medium ${
                   activeTab !== tab.label
-                    ? 'text-samwha_textdarkgray bg-gray-200'
+                    ? 'text-sh_text64 bg-gray-200'
                     : 'bg-white'
                 }`}
                 onClick={() => handleTabClick(tab.label)}

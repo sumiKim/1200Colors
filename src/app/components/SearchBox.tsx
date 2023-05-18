@@ -16,7 +16,7 @@ export default function SearchBox({ dropdown = true, placeholder }: Props) {
             className='border-[1px] border-grey-100 text-black font-bold focus:outline-none rounded px-3 py-1.5 md:px-5 text-center inline-flex items-center justify-between'
             type='button'
           >
-            색상명
+            색이름
             <svg
               className='w-4 h-4 ml-2'
               aria-hidden='true'

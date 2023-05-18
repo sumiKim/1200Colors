@@ -38,7 +38,6 @@ export default function CustomSchemapage({ params: { id } }: Props) {
   }, [data]);
 
   return (
-    // <></>
     <section className='max-w-screen-lg mx-auto flex flex-col p-5'>
       <DetailHeader title='배색' subtitle='배색만들기' />
       <div className='mx-auto lg:w-full flex flex-col lg:flex-row gap-2'>

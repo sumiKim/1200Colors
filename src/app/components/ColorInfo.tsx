@@ -7,27 +7,30 @@ type Props = {
 
 export default function ColorInfo({ color, type }: Props) {
   const colorFont = {
-    samwha: 'text-3xl font-semibold me-5',
-    munsell: 'text-lg text-samwha_textgray',
+    samwha: 'text-3xl font-semibold me-5 ',
+    munsell: 'text-lg text-sh_text89',
     align: 'flex items-center',
-    code_name: 'w-20 font-medium text-samwha_textdarkgray',
-    code_value: 'text-md text-samwha_textgray',
+    code_name1: 'w-20 font-medium text-sh_text64',
+    code_name2: '',
+    code_value: 'text-md text-sh_text126',
   };
 
   const schemaFont = {
-    samwha: 'text-2xl font-semibold me-5',
-    munsell: 'text-md text-samwha_textgray',
+    samwha: 'text-2xl font-semibold me-5 ',
+    munsell: 'text-md text-sh_text89',
     align: 'flex items-center',
-    code_name: 'w-16 text-md font-medium text-samwha_textdarkgray',
-    code_value: 'text-sm text-samwha_textgray ms-1',
+    code_name1: 'w-14 text-md font-medium text-sh_text64',
+    code_name2: 'w-[70px] text-md font-medium text-sh_text64',
+    code_value: 'text-sm text-sh_text126 ms-1',
   };
 
   const popupFont = {
-    samwha: 'text-2xl font-semibold lg:me-5',
-    munsell: 'text-md text-samwha_textgray',
+    samwha: 'text-2xl font-semibold lg:me-5 ',
+    munsell: 'text-md text-sh_text89',
     align: 'flex items-center justify-between lg:justify-normal',
-    code_name: 'w-16 text-md font-medium text-samwha_textdarkgray',
-    code_value: 'text-sm text-samwha_textgray ms-1',
+    code_name1: 'w-16 text-md font-medium text-sh_text64',
+    code_name2: '',
+    code_value: 'text-sm text-sh_text126 ms-1',
   };
 
   const font =
@@ -46,8 +49,7 @@ export default function ColorInfo({ color, type }: Props) {
       break;
   }
   return (
-    // <div className='w-full ms-5 lg:m-0'>
-    <div className='w-full'>
+    <div className='grow'>
       <div
         className={
           type === 'schema' || type === 'popup'
@@ -69,13 +71,13 @@ export default function ColorInfo({ color, type }: Props) {
           <div className={`w-full ${infoStyle}`}>
             <div className='basis-1/3'>
               <div className={`${font.align}`}>
-                <div className={`${font.code_name}`}>L*a*b*</div>
+                <div className={`${font.code_name1}`}>L*a*b*</div>
                 <div
                   className={`${font.code_value}`}
                 >{`${color?.['L*']} / ${color?.['a*']} / ${color?.['b*']}`}</div>
               </div>
               <div className={`${font.align}`}>
-                <div className={`${font.code_name}`}>RGB</div>
+                <div className={`${font.code_name1}`}>RGB</div>
                 <div
                   className={`${font.code_value}`}
                 >{`${color.R} / ${color.G} / ${color.B}`}</div>
@@ -83,23 +85,23 @@ export default function ColorInfo({ color, type }: Props) {
             </div>
             <div className='basis-1/3'>
               <div className={`${font.align}`}>
-                <div className={`${font.code_name}`}>CMYK</div>
+                <div className={`${font.code_name1}`}>CMYK</div>
                 <div
                   className={`${font.code_value}`}
                 >{`${color.C} / ${color.M} / ${color.Y} / ${color.K}`}</div>
               </div>
               <div className={`${font.align}`}>
-                <div className={`${font.code_name}`}>HEX</div>
+                <div className={`${font.code_name1}`}>HEX</div>
                 <div className={`${font.code_value}`}>{`#${color.HEX}`}</div>
               </div>
             </div>
             <div className='basis-1/3'>
               <div className={`${font.align}`}>
-                <div className={`${font.code_name}`}>NCS</div>
+                <div className={`${font.code_name2}`}>NCS</div>
                 <div className={`${font.code_value}`}>{`${color.NCS}`}</div>
               </div>
               <div className={`${font.align}`}>
-                <div className={`${font.code_name}`}>Pantone</div>
+                <div className={`${font.code_name2}`}>Pantone</div>
                 <div className={`${font.code_value}`}>{`${color.Pantone}`}</div>
               </div>
             </div>

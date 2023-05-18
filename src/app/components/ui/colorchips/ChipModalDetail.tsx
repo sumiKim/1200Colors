@@ -68,7 +68,7 @@ export default function ChipModalDetail({ color, style }: Props) {
                 {selected ? <BookmarkFillIcon /> : <BookmarkIcon />}
               </button>
               <button
-                className='text-samwha_textgray hover:text-black mt-1'
+                className='text-samwha_lightgray hover:text-black mt-1'
                 onClick={handleMoreClick}
               >
                 more

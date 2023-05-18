@@ -39,7 +39,7 @@ export default function TopHeader() {
               ${
                 pathName === item.href
                   ? 'text-white font-bold'
-                  : 'text-samwha_textgray'
+                  : 'text-samwha_lightgray'
               }
               hover:text-white
               hover:border-[3px]

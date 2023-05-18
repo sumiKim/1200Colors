@@ -341,7 +341,7 @@ export default function ColorDetailPage({ params: { id } }: Props) {
   return (
     <section className='max-w-screen-lg mx-auto flex flex-col p-5'>
       <DetailHeader title='배색' subtitle='배색정보' />
-      <div className='mx-auto lg:w-full flex flex-col lg:flex-row gap-2'>
+      <div className='mx-auto lg:w-full flex flex-col lg:flex-row gap-4'>
         <div className='basis-1/3'>
           {schema && <ColorSchemaSquare schema={schema} size={'large'} />}
         </div>
@@ -354,7 +354,7 @@ export default function ColorDetailPage({ params: { id } }: Props) {
               handleClick={handleCustomColor}
             />
           </div>
-          <div className='flex flex-col gap-2'>
+          <div className='flex flex-col gap-4'>
             {schema && <ChipSchemaDetail color={schema.base} />}
             {schema && <ChipSchemaDetail color={schema.accent} />}
             {schema && <ChipSchemaDetail color={schema.secondary} />}

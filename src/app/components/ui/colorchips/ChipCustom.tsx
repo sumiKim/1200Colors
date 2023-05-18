@@ -22,12 +22,12 @@ export default function ChipCustom({ area, color, handleEdit }: Props) {
 
   return (
     <>
-      <div className='flex mb-3 w-full h-20 flex-col lg:flex-row'>
+      <div className='flex mt-3 w-full h-20 flex-row'>
         <div
-          className='basis-1/2 mb-2 lg:mb-0 lg:me-3'
+          className='w-[70px] me-4 lg:basis-1/2 mb-2 lg:mb-0 lg:me-3'
           style={{ backgroundColor: `#${color.HEX}` }}
         />
-        <div className='basis-1/2 flex items-center'>
+        <div className='grow lg:basis-1/2 flex items-center'>
           <ColorInfo color={color} type={'simple'} />
           <Button icon={'info'} handleClick={handleOpenModal} />
           <Button icon={'edit'} handleClick={handleEdit} edit_value={area} />

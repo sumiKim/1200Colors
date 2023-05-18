@@ -145,14 +145,13 @@ export default function DetailHeader({ color, title, subtitle }: Props) {
 
   return (
     <div className='flex flex-col py-2'>
-      {/* <h1 className='text-2xl font-bold py-2'>{title}</h1> */}
       <div className='flex h-10 justify-between'>
-        <div className='flex h-10 items-center text-samwha_textgray'>
+        <div className='flex h-10 items-center text-sh_text64'>
           <HomeIcon />
           <DivideIcon />
           <span>{title}</span>
           <DivideIcon />
-          <span className='text-black'>{subtitle}</span>
+          <span className='text-sh_text64'>{subtitle}</span>
         </div>
 
         {color && (
