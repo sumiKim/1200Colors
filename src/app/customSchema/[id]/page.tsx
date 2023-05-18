@@ -31,7 +31,6 @@ export default function CustomSchemapage({ params: { id } }: Props) {
   };
 
   useEffect(() => {
-    // setNewSchema(data);
     if (data !== undefined) {
       initColor({ ...data });
     }

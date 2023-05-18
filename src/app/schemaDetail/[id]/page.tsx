@@ -18,12 +18,11 @@ export default function ColorDetailPage({ params: { id } }: Props) {
     NotFound();
   }
 
-  // id로 배색의 상세정보 가져오기
-  const {
-    data: schema,
-    isLoading,
-    error,
-  } = useSWR<ColorSchema>(`/api/schema_detail/${id}`);
+  const { data, isLoading, error } = useSWR(
+    `http://localhost:3001/1200color/getColorSchemeById/${id}`
+  );
+
+  const schema: ColorSchema = data?.[0];
 
   const handleCustomColor = () => {
     window.location.href = `/customSchema/${id}`;

@@ -15,11 +15,11 @@ export default function ColorDetailPage({ params: { samwha_code } }: Props) {
     NotFound();
   }
 
-  const {
-    data: color,
-    isLoading,
-    error,
-  } = useSWR<Color>(`/api/detail/${samwha_code}`);
+  const { data, isLoading, error } = useSWR(
+    `http://localhost:3001/1200color/getColorBySamwhaCode/${samwha_code}`
+  );
+
+  const color: Color = data?.[0];
 
   return (
     <section className='max-w-screen-lg mx-auto flex flex-col p-5'>
@@ -37,35 +37,4 @@ export default function ColorDetailPage({ params: { samwha_code } }: Props) {
       </div>
     </section>
   );
-}
-
-// 한글 깨짐 : 추천배색 안넣을거면 상관 없음
-// 폰트 설정 안됨
-
-// const handleClick = () => {
-//   const div = document.getElementById(`_${color?.samwha_code}`) as HTMLElement;
-
-//   const cloneA = div.innerHTML;
-//   console.log(cloneA);
-
-//   let w = document.documentElement.clientWidth; // 숫자 여야함
-//   const h = document.documentElement.clientHeight;
-
-//   // let doc = new jsPDF('l', 'px', [w, h]);
-
-//   // doc.html(div, {
-//   //   callback: function (doc) {
-//   //     doc.save('sumi');
-//   //   },
-//   //   x: 10,
-//   //   y: 10,
-//   // });
-// };
-
-{
-  /* <ColorDetailForPDF
-        color={color}
-        buttonview={true}
-        handleClick={handleClick}
-      /> */
 }

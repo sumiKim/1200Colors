@@ -1,18 +1,16 @@
-import {
-  getAllData,
-  getColorSchemaToCsvSchema,
-} from '@/service/1200colorschemas';
+'use client';
+
+import useSWR from 'swr';
 import { ColorSchema } from '@/service/type';
 import ColorSchemaSquare from './ui/colorchips/ColorSchemaSquare';
 
-export default async function FeaturedColorSchemas() {
-  const colorschemas: ColorSchema[] = [];
-  const allData = await getAllData();
-
-  await Promise.all(
-    allData.map(async data =>
-      colorschemas.push(await getColorSchemaToCsvSchema(data))
-    )
+export default function FeaturedColorSchemas() {
+  const {
+    data: colorschemas,
+    isLoading,
+    error,
+  } = useSWR<ColorSchema[]>(
+    `http://localhost:3001/1200color/getAllColorScheme`
   );
 
   return (

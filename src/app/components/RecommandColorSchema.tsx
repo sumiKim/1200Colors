@@ -15,8 +15,6 @@ export default function RecommandColorSchema({ color }: Props) {
     error,
   } = useSWR<ColorSchema>(`/api/recommand_colorschema/${color.samwha_code}`);
 
-  console.log(colorschema);
-
   return (
     <div className=' mt-10'>
       <span className='text-lg font-medium'>추천배색</span>
