@@ -41,7 +41,7 @@ export default function SearchBox({ dropdown = true, placeholder }: Props) {
               className='py-2 text-sm text-gray-700 dark:text-gray-200'
               aria-labelledby='dropdownDefaultButton'
             >
-              <li>
+              <li key={'search_key_1'}>
                 <a
                   href='#'
                   className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
@@ -49,7 +49,7 @@ export default function SearchBox({ dropdown = true, placeholder }: Props) {
                   색상이름
                 </a>
               </li>
-              <li>
+              <li key={'search_key_2'}>
                 <a
                   href='#'
                   className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
@@ -57,7 +57,7 @@ export default function SearchBox({ dropdown = true, placeholder }: Props) {
                   삼화코드
                 </a>
               </li>
-              <li>
+              <li key={'search_key_3'}>
                 <a
                   href='#'
                   className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
@@ -65,7 +65,7 @@ export default function SearchBox({ dropdown = true, placeholder }: Props) {
                   H V/C
                 </a>
               </li>
-              <li>
+              <li key={'search_key_4'}>
                 <a
                   href='#'
                   className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
@@ -73,7 +73,7 @@ export default function SearchBox({ dropdown = true, placeholder }: Props) {
                   NCS
                 </a>
               </li>
-              <li>
+              <li key={'search_key_5'}>
                 <a
                   href='#'
                   className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'

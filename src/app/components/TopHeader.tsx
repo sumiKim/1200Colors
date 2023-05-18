@@ -6,14 +6,17 @@ import { usePathname } from 'next/navigation';
 
 const mainMenu = [
   {
+    id: 'menu1',
     href: '/color',
     name: '컬러',
   },
   {
+    id: 'menu2',
     href: '/colorschema',
     name: '배색',
   },
   {
+    id: 'menu3',
     href: '/place',
     name: '공간',
   },
@@ -30,6 +33,7 @@ export default function TopHeader() {
       <ul className='w-full flex justify-center items-center'>
         {mainMenu.map(item => (
           <li
+            id={item.id}
             key={item.href}
             className={`flex flex-auto lg:flex-none justify-center px-8 py-3 text-lg 
               ${pathName === item.href ? 'font-bold' : 'text-samwha_textgray'}
