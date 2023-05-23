@@ -3,6 +3,7 @@
 import useSWR from 'swr';
 import { ColorSchema } from '@/service/type';
 import ColorSchemaSquare from './ui/colorchips/ColorSchemaSquare';
+import { config } from '../util/config';
 
 export default function FeaturedColorSchemas() {
   const {
@@ -10,7 +11,7 @@ export default function FeaturedColorSchemas() {
     isLoading,
     error,
   } = useSWR<ColorSchema[]>(
-    `http://localhost:3001/1200color/getAllColorScheme`
+    `${config.server.baseURL}/1200color/getAllColorScheme`
   );
 
   return (

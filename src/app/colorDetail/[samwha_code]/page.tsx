@@ -7,6 +7,7 @@ import RecommandColorSchema from '@/app/components/RecommandColorSchema';
 import NotFound from './not-found';
 import ColorSquare from '@/app/components/ui/colorchips/ColorSquare';
 import useSWR from 'swr';
+import { config } from '../../util/config';
 
 type Props = { params: { samwha_code: string } };
 
@@ -16,7 +17,7 @@ export default function ColorDetailPage({ params: { samwha_code } }: Props) {
   }
 
   const { data, isLoading, error } = useSWR(
-    `http://localhost:3001/1200color/getColorBySamwhaCode/${samwha_code}`
+    `${config.server.baseURL}/1200color/getColorBySamwhaCode/${samwha_code}`
   );
 
   const color: Color = data?.[0];

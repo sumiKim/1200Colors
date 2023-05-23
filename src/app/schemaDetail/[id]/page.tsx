@@ -10,6 +10,7 @@ import ColorSchemaSquare from '@/app/components/ui/colorchips/ColorSchemaSquare'
 import ChipSchemaDetail from '@/app/components/ui/colorchips/ChipSchemaDetail';
 import Button from '@/app/components/ui/Button';
 import { ColorSchema } from '@/service/type';
+import { config } from '../../util/config';
 
 type Props = { params: { id: string } };
 
@@ -19,7 +20,7 @@ export default function ColorDetailPage({ params: { id } }: Props) {
   }
 
   const { data, isLoading, error } = useSWR(
-    `http://localhost:3001/1200color/getColorSchemeById/${id}`
+    `${config.server.baseURL}/1200color/getColorSchemeById/${id}`
   );
 
   const schema: ColorSchema = data?.[0];

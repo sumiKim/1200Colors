@@ -26,7 +26,7 @@ body {
   top: 0;
   width: 72px;
   height: 72px;
-  background-image: url(./resource/swatches-selected.svg);
+  background-image: url(./public/image/swatches-selected.svg);
 }
 
 .out_gradient {

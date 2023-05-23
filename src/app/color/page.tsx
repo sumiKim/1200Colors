@@ -1,14 +1,15 @@
 'use client';
-import useSWR from 'swr';
 import { Color } from '@/service/type';
+import useSWR from 'swr';
 import ChipDefault from '../components/ui/colorchips/ChipDefault';
+import { config } from '../util/config';
 
 export default function ColorPage() {
   const {
     data: colors,
     isLoading,
     error,
-  } = useSWR<Color[]>(`http://localhost:3001/1200color/getAllColor`);
+  } = useSWR<Color[]>(`${config.server.baseURL}/1200color/getAllColor`);
 
   return (
     <div className='bg-white h-screen lg:pl-60 lg:pr-5 lg:pt-4 flex justify-center'>

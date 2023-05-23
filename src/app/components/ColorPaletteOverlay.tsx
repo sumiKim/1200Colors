@@ -28,8 +28,6 @@ export default function ColorPaletteOverlay({
 
   const handleTabClick = (label: string) => {
     setActiveTab(label);
-    console.log('handleTabClick');
-    console.log(label); // 어떤 영역 눌렸는지 나옴 ?
   };
   return (
     <section

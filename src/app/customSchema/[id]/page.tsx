@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import ColorPaletteOverlay from '@/app/components/ColorPaletteOverlay';
 import { ColorSchema } from '@/service/type';
 import { SchemaArea, useCustomSchema } from '@/app/context/CustomSchemaContext';
+import { config } from '../../util/config';
 
 type Props = { params: { id: string } };
 
@@ -18,7 +19,7 @@ export default function CustomSchemapage({ params: { id } }: Props) {
   }
 
   const { data, isLoading, error } = useSWR(
-    `http://localhost:3001/1200color/getColorSchemeById/${id}`
+    `${config.server.baseURL}/1200color/getColorSchemeById/${id}`
   );
 
   const { schema, initColor, handleChangeArea } = useCustomSchema();

@@ -9,7 +9,6 @@ export default function MyColorBottom() {
   const [open, setOpen] = useState(true);
 
   const handleClick = () => {
-    console.log('click');
     setOpen(!open);
   };
 

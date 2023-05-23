@@ -22,7 +22,9 @@ export default function MainBanner({ image, title, link }: Props) {
           style={{ backgroundColor: '#c8c6c4' }}
         >
           {title}
-          <ArrowIcon />
+          <div className='mt-1'>
+            <ArrowIcon />
+          </div>
         </div>
       </Link>
     </div>

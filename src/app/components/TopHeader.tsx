@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import Logo from '../res/image/whitefont.png';
+import Logo from '../public/image/Logo/whiteFontLogo.png';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
