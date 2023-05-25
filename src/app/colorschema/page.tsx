@@ -3,16 +3,12 @@ import useSWR from 'swr';
 import ColorSchemaSquare from '../components/ui/colorchips/ColorSchemaSquare';
 import { ResSchemas } from '@/service/type';
 import { makeReqUrl, useSearchBox } from '../context/SearchBoxContext';
-import useDebounce from '../hooks/debounce';
 import Error from '../components/ui/Error';
 
 export default function ColorSchemaPage() {
   const { searchType, searchKeyword } = useSearchBox();
-
-  const debouncedKeyword = useDebounce(searchKeyword);
-
   const { data, isLoading, error } = useSWR<ResSchemas>(
-    makeReqUrl(searchType, debouncedKeyword)
+    makeReqUrl(searchType, searchKeyword)
   );
 
   const schemas = data?.result.resColor;
