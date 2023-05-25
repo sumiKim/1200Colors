@@ -1,7 +1,8 @@
-import { ColorSchema } from '@/service/type';
+import { Schema } from '@/service/type';
 import Link from 'next/link';
+
 type Props = {
-  schema: ColorSchema;
+  schema: Schema;
   size: 'medium' | 'large';
 };
 

@@ -1,11 +1,10 @@
 'use client';
-
-import { Color } from '@/service/type';
 import { useState } from 'react';
 import { useSelectedColor } from '../../../context/SelectedColorContext';
 import ChipModalDetail from './ChipModalDetail';
 import ColorModal from '../../ColorModal';
 import ModalPortal from '../ModalPortal';
+import { Color } from '@/service/type';
 
 type Props = {
   color: Color;

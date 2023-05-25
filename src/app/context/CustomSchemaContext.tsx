@@ -1,7 +1,6 @@
 'use client';
-
-import { Color, ColorSchema } from '@/service/type';
 import { createContext, useContext, useState } from 'react';
+import { Color, Schema } from '@/service/type';
 
 let DefaultColor = {
   id: 0,
@@ -41,8 +40,8 @@ type Props = {
 
 export type SchemaArea = 'secondary' | 'accent' | 'base';
 type ContextProps = {
-  schema: ColorSchema;
-  initColor: (schema: ColorSchema) => void;
+  schema: Schema;
+  initColor: (schema: Schema) => void;
   changeColor: (key: SchemaArea, c: Color) => void;
   changeArea?: SchemaArea;
   handleChangeArea: (area: SchemaArea) => void;
@@ -50,7 +49,7 @@ type ContextProps = {
 
 const defaultValue = {
   schema: DefaultColorSchema,
-  initColor: (schema: ColorSchema) => {},
+  initColor: (schema: Schema) => {},
   changeColor: (key: SchemaArea, c: Color) => {},
   handleChangeArea: (area: SchemaArea) => {},
 };
@@ -58,15 +57,15 @@ const defaultValue = {
 export const CustomSchemaContext = createContext<ContextProps>(defaultValue);
 
 export default function CustomSchemaProvider({ children }: Props) {
-  const [schema, setSchema] = useState<ColorSchema>(DefaultColorSchema);
+  const [schema, setSchema] = useState<Schema>(DefaultColorSchema);
   const [changeArea, setChangeArea] = useState<SchemaArea>(); // 어떤 영역 바꾸려고 ?
 
-  const initColor = (schema: ColorSchema) => {
+  const initColor = (schema: Schema) => {
     setSchema({ ...schema });
   };
 
   const changeColor = (key: 'secondary' | 'accent' | 'base', c: Color) => {
-    const copyArr: ColorSchema = { ...schema };
+    const copyArr: Schema = { ...schema };
     switch (key) {
       case 'secondary':
         copyArr.secondary = c;

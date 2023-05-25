@@ -1,14 +1,12 @@
 'use client';
-
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
-
 import { useState } from 'react';
 import { useSelectedColor } from '../context/SelectedColorContext';
 import DivideIcon from './ui/icons/DivideIcon';
 import HomeIcon from './ui/icons/HomeIcon';
-import { Color } from '@/service/type';
 import Button from './ui/Button';
+import { Color } from '@/service/type';
 
 type Props = {
   color?: Color;

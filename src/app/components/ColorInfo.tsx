@@ -11,7 +11,7 @@ export default function ColorInfo({ color, type }: Props) {
     munsell: 'text-lg text-sh_text89',
     align: 'flex items-center',
     code_name1: 'w-20 font-medium text-sh_text64',
-    code_name2: '',
+    code_name2: 'w-20 font-medium text-sh_text64',
     code_value: 'text-md text-sh_text126',
   };
 

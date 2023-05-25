@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import { useSelectedColor } from '../context/SelectedColorContext';
 import ChipSimple from './ui/colorchips/ChipSimple';

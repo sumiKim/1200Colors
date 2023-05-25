@@ -45,7 +45,6 @@ const badgeList = [
 
 export default function BadgeList() {
   return (
-    // <div className='w-96 px-3 md:w-fit overflow-x-scroll whitespace-nowrap'>
     <div className='w-full md:w-fit overflow-x-scroll whitespace-nowrap'>
       <ul className='flex gap-4'>
         {badgeList.map(badge => (

@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import { IPlaceNav } from './PlaceNav';
 import ArrowForwardIcon from './ui/icons/ArrowForwardIcon';

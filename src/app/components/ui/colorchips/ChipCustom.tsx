@@ -1,13 +1,11 @@
 'use client';
-
-import { useCustomSchema } from '@/app/context/CustomSchemaContext';
-import { Color } from '@/service/type';
 import { useState } from 'react';
 import ColorInfo from '../../ColorInfo';
 import ColorModal from '../../ColorModal';
 import Button from '../Button';
 import ModalPortal from '../ModalPortal';
 import ChipModalDetail from './ChipModalDetail';
+import { Color } from '@/service/type';
 
 type Props = {
   area: string;

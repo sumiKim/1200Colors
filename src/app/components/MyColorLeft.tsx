@@ -1,5 +1,4 @@
 'use client';
-
 import { useSelectedColor } from '../context/SelectedColorContext';
 import ChipSimple from './ui/colorchips/ChipSimple';
 

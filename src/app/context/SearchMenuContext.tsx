@@ -23,7 +23,7 @@ const defaultState = {
 export const dropdownMenu = [
   {
     id: 0,
-    name: '색상명',
+    name: '색이름',
   },
   {
     id: 1,

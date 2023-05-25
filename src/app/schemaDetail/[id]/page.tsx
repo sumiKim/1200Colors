@@ -1,16 +1,15 @@
 'use client';
-
+import useSWR from 'swr';
+import { config } from '../../util/config';
+import NotFound from './not-found';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
-
 import DetailHeader from '@/app/components/DetailHeader';
-import NotFound from './not-found';
-import useSWR from 'swr';
 import ColorSchemaSquare from '@/app/components/ui/colorchips/ColorSchemaSquare';
 import ChipSchemaDetail from '@/app/components/ui/colorchips/ChipSchemaDetail';
 import Button from '@/app/components/ui/Button';
-import { ColorSchema } from '@/service/type';
-import { config } from '../../util/config';
+import { ResSchema, Schema } from '@/service/type';
+import Error from '@/app/components/ui/Error';
 
 type Props = { params: { id: string } };
 
@@ -19,11 +18,11 @@ export default function ColorDetailPage({ params: { id } }: Props) {
     NotFound();
   }
 
-  const { data, isLoading, error } = useSWR(
-    `${config.server.baseURL}/1200color/getColorSchemeById/${id}`
+  const { data, isLoading, error } = useSWR<ResSchema>(
+    `${config.server.baseURL}/schema/${id}`
   );
 
-  const schema: ColorSchema = data?.[0];
+  const schema = data?.result;
 
   const handleCustomColor = () => {
     window.location.href = `/customSchema/${id}`;
@@ -341,27 +340,32 @@ export default function ColorDetailPage({ params: { id } }: Props) {
 
   return (
     <section className='max-w-screen-lg mx-auto flex flex-col p-5'>
-      <DetailHeader title='배색' subtitle='배색정보' />
-      <div className='mx-auto lg:w-full flex flex-col lg:flex-row gap-4'>
-        <div className='basis-1/3'>
-          {schema && <ColorSchemaSquare schema={schema} size={'large'} />}
-        </div>
-        <div className='basis-2/3 flex flex-col justify-between'>
-          <div className='flex justify-end gap-1'>
-            <Button icon='pdf' handleClick={handlePDFClick} />
-            <Button
-              icon='swatch'
-              description='Custom Color'
-              handleClick={handleCustomColor}
-            />
+      {error && <Error />}
+      {schema && (
+        <>
+          <DetailHeader title='배색' subtitle='배색정보' />
+          <div className='mx-auto lg:w-full flex flex-col lg:flex-row gap-4'>
+            <div className='basis-1/3'>
+              <ColorSchemaSquare schema={schema} size={'large'} />
+            </div>
+            <div className='basis-2/3 flex flex-col justify-between'>
+              <div className='flex justify-end gap-1'>
+                <Button icon='pdf' handleClick={handlePDFClick} />
+                <Button
+                  icon='swatch'
+                  description='Custom Color'
+                  handleClick={handleCustomColor}
+                />
+              </div>
+              <div className='flex flex-col gap-4'>
+                <ChipSchemaDetail color={schema.base} />
+                <ChipSchemaDetail color={schema.accent} />
+                <ChipSchemaDetail color={schema.secondary} />
+              </div>
+            </div>
           </div>
-          <div className='flex flex-col gap-4'>
-            {schema && <ChipSchemaDetail color={schema.base} />}
-            {schema && <ChipSchemaDetail color={schema.accent} />}
-            {schema && <ChipSchemaDetail color={schema.secondary} />}
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </section>
   );
 }

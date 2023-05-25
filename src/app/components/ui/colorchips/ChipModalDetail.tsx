@@ -1,7 +1,6 @@
 'use client';
-
-import { useSelectedColor } from '@/app/context/SelectedColorContext';
 import { useState } from 'react';
+import { useSelectedColor } from '@/app/context/SelectedColorContext';
 import ColorInfo from '../../ColorInfo';
 import BookmarkFillIcon from '../icons/BookmarkFillIcon';
 import BookmarkIcon from '../icons/BookmarkIcon';

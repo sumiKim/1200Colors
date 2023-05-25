@@ -1,7 +1,6 @@
 'use client';
-
-import { Color } from '@/service/type';
 import { createContext, useContext, useEffect, useState } from 'react';
+import { Color } from '@/service/type';
 
 import {
   getDataAtStorage,

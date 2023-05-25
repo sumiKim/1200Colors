@@ -24,26 +24,34 @@ export type Color = {
   Pantone: string;
 };
 
-export type colorObj = {
-  [key: string]: string;
-};
-
 //---> Schema
-export type Obj = {
-  [key: string]: string;
-};
-
-// key가 string 이라는 것을 표현하고 싶다.
-export type CsvColorSchema = {
-  [id: string]: string;
-  secondary: string;
-  accent: string;
-  base: string;
-};
-
-export type ColorSchema = {
+export type Schema = {
   id: string;
   secondary: Color;
   accent: Color;
   base: Color;
+};
+
+//---> Type Result for api
+export type ResColors = {
+  status: boolean;
+  result: Color[];
+};
+
+export type ResColor = {
+  status: boolean;
+  result: Color;
+};
+
+export type ResSchemas = {
+  status: boolean;
+  result: {
+    searchType: string;
+    resColor: Schema[];
+  };
+};
+
+export type ResSchema = {
+  status: boolean;
+  result: Schema;
 };
