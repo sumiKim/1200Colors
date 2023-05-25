@@ -110,19 +110,15 @@ const checkKeyword = (
 };
 
 export const makeReqUrl = (searchType: string, searchKeyword: string) => {
-  console.log(`1️⃣ ${searchType} / ${searchKeyword}`);
   let reqUrl = '';
 
   if (searchKeyword === '') {
     reqUrl = `${config.server.baseURL}/schema`;
   } else {
     const result = checkKeyword(searchType, searchKeyword);
-    console.log(`⭐️`);
-    console.log(result);
     if (result.res) {
       reqUrl = `${config.server.baseURL}/schema?type=${searchType}&code=${result.keyword}`;
     }
   }
-  console.log(`2️⃣ makeReqUrl : ${reqUrl}`);
   return reqUrl;
 };

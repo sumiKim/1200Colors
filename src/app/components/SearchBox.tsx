@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { useSearchBox } from '../context/SearchBoxContext';
+import { SearchType, useSearchBox } from '../context/SearchBoxContext';
 import Button from './ui/Button';
 import { Menu } from '@/data/searchBox';
 
@@ -18,6 +18,7 @@ export default function SearchBox({
   const { searchType, handleSearchType, handleSearchKeyword } = useSearchBox();
 
   const [open, setOpen] = useState(false);
+  const [selectedType, setSelectedType] = useState<SearchType>('colorname');
   const [inputKeyword, setInputKeyword] = useState('');
   const [searchGuide, setSearchGuide] = useState(
     placeholder ?? '색이름으로 검색해보세요.'
@@ -28,20 +29,15 @@ export default function SearchBox({
   };
 
   const changeSearchType = (type: Menu) => {
-    handleSearchType(type.value);
-    setSearchGuide(type.msg);
+    setSelectedType(type.value);
     setInputKeyword('');
-
-    if (type.value === 'H V/C') {
-    } else {
-      setInputKeyword('');
-    }
-
+    setSearchGuide(type.msg);
     setOpen(!open);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
+      handleSearchType(selectedType);
       handleSearchKeyword(inputKeyword);
     }
   };
@@ -58,11 +54,11 @@ export default function SearchBox({
             type='button'
             onClick={handleClick}
           >
-            {searchType === 'colorname'
+            {selectedType === 'colorname'
               ? '색이름'
-              : searchType === 'samhwa'
+              : selectedType === 'samhwa'
               ? '삼화코드'
-              : searchType}
+              : selectedType}
             <svg
               className='w-4 h-4 ml-2'
               aria-hidden='true'
