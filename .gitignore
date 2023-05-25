@@ -36,3 +36,4 @@ next-env.d.ts
 
 #
 .history
+/src/app/a_test/*
