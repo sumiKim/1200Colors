@@ -1,22 +1,30 @@
 'use client';
 import useSWR from 'swr';
-import { config } from '../util/config';
 import ChipDefault from '../components/ui/colorchips/ChipDefault';
 import { ResColors } from '@/service/type';
 import Error from '../components/ui/Error';
+import { makeReqUrlForColor, useSearchBox } from '../context/SearchBoxContext';
+import NoSearchResults from '../components/ui/NoSearchResults';
 
 export default function ColorPage() {
-  const { data, isLoading, error } = useSWR<ResColors>(
-    `${config.server.baseURL}/color`
-  );
+  const { searchType, searchKeyword } = useSearchBox();
+  const reqUrl = makeReqUrlForColor(searchType, searchKeyword);
+  const { data, isLoading, error } = useSWR<ResColors>(reqUrl !== '' && reqUrl);
 
-  const colors = data?.result;
+  let colors = data?.result.resColor;
+
+  if (colors !== undefined && data?.result.nearbyColor !== undefined) {
+    colors = [...colors, ...data?.result.nearbyColor]; // 중복 칼라 있음.
+  }
 
   return (
     <div className='bg-white h-screen lg:pl-60 lg:pr-5 lg:pt-4 flex justify-center'>
       <div className='h-3/4 w-fit overflow-scroll'>
         <section className='w-fit p-1 bg-white'>
           {error && <Error />}
+          {(reqUrl === '' || colors?.length === 0) && (
+            <NoSearchResults type={searchType} keyword={searchKeyword} />
+          )}
           {colors && (
             <ul className='grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 text-center gap-2 p-2 w-fit '>
               {colors.map(color => (

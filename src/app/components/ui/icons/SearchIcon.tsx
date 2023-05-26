@@ -1,5 +1,8 @@
 import { BiSearch } from 'react-icons/bi';
 
-export default function SearchIcon() {
-  return <BiSearch className='w-5 h-5' />;
+type Props = {
+  size?: 'normal' | 'large';
+};
+export default function SearchIcon({ size }: Props) {
+  return <BiSearch className={`${size === 'large' ? 'w-9 h-9' : 'w-5 h-5'}`} />;
 }

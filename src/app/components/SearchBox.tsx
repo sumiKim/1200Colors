@@ -1,6 +1,10 @@
 'use client';
 import { useState } from 'react';
-import { SearchType, useSearchBox } from '../context/SearchBoxContext';
+import {
+  convertType,
+  SearchType,
+  useSearchBox,
+} from '../context/SearchBoxContext';
 import Button from './ui/Button';
 import { Menu } from '@/data/searchBox';
 
@@ -10,16 +14,23 @@ type Props = {
   placeholder?: string;
 };
 
+type HVC = {
+  H: string;
+  V: string;
+  C: string;
+};
+
 export default function SearchBox({
   dropdown = true,
   menu,
   placeholder,
 }: Props) {
-  const { searchType, handleSearchType, handleSearchKeyword } = useSearchBox();
+  const { handleSearchType, handleSearchKeyword } = useSearchBox();
 
   const [open, setOpen] = useState(false);
   const [selectedType, setSelectedType] = useState<SearchType>('colorname');
   const [inputKeyword, setInputKeyword] = useState('');
+  const [inputHVC, setInputHVC] = useState<HVC>({ H: '', V: '', C: '' });
   const [searchGuide, setSearchGuide] = useState(
     placeholder ?? '색이름으로 검색해보세요.'
   );
@@ -31,6 +42,7 @@ export default function SearchBox({
   const changeSearchType = (type: Menu) => {
     setSelectedType(type.value);
     setInputKeyword('');
+    setInputHVC({ H: '', V: '', C: '' });
     setSearchGuide(type.msg);
     setOpen(!open);
   };
@@ -38,7 +50,12 @@ export default function SearchBox({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSearchType(selectedType);
-      handleSearchKeyword(inputKeyword);
+      if (selectedType === 'H V/C') {
+        const HVC_keyword = `${inputHVC.H}  ${inputHVC.V}/${inputHVC.C}`;
+        handleSearchKeyword(HVC_keyword);
+      } else {
+        handleSearchKeyword(inputKeyword);
+      }
     }
   };
 
@@ -54,11 +71,7 @@ export default function SearchBox({
             type='button'
             onClick={handleClick}
           >
-            {selectedType === 'colorname'
-              ? '색이름'
-              : selectedType === 'samhwa'
-              ? '삼화코드'
-              : selectedType}
+            {convertType(selectedType)}
             <svg
               className='w-4 h-4 ml-2'
               aria-hidden='true'
@@ -91,11 +104,7 @@ export default function SearchBox({
                         className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
                         onClick={() => changeSearchType(item)}
                       >
-                        {item.value === 'colorname'
-                          ? '색이름'
-                          : item.value === 'samhwa'
-                          ? '삼화코드'
-                          : item.value}
+                        {convertType(item.value)}
                       </a>
                     </li>
                   ))}
@@ -116,7 +125,7 @@ export default function SearchBox({
           ></input>
         </>
       )} */}
-      {searchType !== 'H V/C' && (
+      {selectedType !== 'H V/C' && (
         <input
           type='text'
           placeholder={searchGuide}
@@ -126,35 +135,35 @@ export default function SearchBox({
           onKeyDown={handleKeyDown}
         ></input>
       )}
-      {/* {searchType == 'H V/C' && (
+      {selectedType == 'H V/C' && (
         <>
           <input
             type='text'
             placeholder={'H'}
             className='border-[1px] border-grey-100 focus:outline-none rounded px-2 grow bg-[#EEEEEE]'
-            value={searchH}
-            onChange={e => setSearchH(e.target.value)}
-            onKeyDown={handleOnKeyPress}
+            value={inputHVC.H}
+            onChange={e => setInputHVC({ ...inputHVC, H: e.target.value })}
+            onKeyDown={handleKeyDown}
           ></input>
           <input
             type='text'
             placeholder={'V'}
             className='border-[1px] border-grey-100 focus:outline-none rounded px-2 grow bg-[#EEEEEE]'
-            value={searchV}
-            onChange={e => setSearchV(e.target.value)}
-            onKeyDown={handleOnKeyPress}
+            value={inputHVC.V}
+            onChange={e => setInputHVC({ ...inputHVC, V: e.target.value })}
+            onKeyDown={handleKeyDown}
           ></input>
           <div className='flex items-center text-3xl text-[#9ba3af]'>/</div>
           <input
             type='text'
             placeholder={'C'}
             className='border-[1px] border-grey-100 focus:outline-none rounded px-2 grow bg-[#EEEEEE]'
-            value={searchC}
-            onChange={e => setSearchC(e.target.value)}
-            onKeyDown={handleOnKeyPress}
+            value={inputHVC.C}
+            onChange={e => setInputHVC({ ...inputHVC, C: e.target.value })}
+            onKeyDown={handleKeyDown}
           ></input>
         </>
-      )} */}
+      )}
 
       {!dropdown && (
         <div>

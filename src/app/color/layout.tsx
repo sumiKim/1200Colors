@@ -1,6 +1,7 @@
 import MyColorBottom from '../components/MyColorBottom';
 import MyColorLeft from '../components/MyColorLeft';
 import PageTitle from '../components/PageTitle';
+import SearchBoxProvider from '../context/SearchBoxContext';
 
 export default function ColorLayout({
   children,
@@ -9,10 +10,12 @@ export default function ColorLayout({
 }) {
   return (
     <>
-      <PageTitle titleName='컬러' badgeView={true} />
-      <MyColorLeft />
-      {children}
-      <MyColorBottom />
+      <SearchBoxProvider>
+        <PageTitle titleName='컬러' badgeView={true} />
+        <MyColorLeft />
+        {children}
+        <MyColorBottom />
+      </SearchBoxProvider>
     </>
   );
 }

@@ -35,7 +35,11 @@ export type Schema = {
 //---> Type Result for api
 export type ResColors = {
   status: boolean;
-  result: Color[];
+  result: {
+    searchType: string;
+    resColor: Color[];
+    nearbyColor?: Color[];
+  };
 };
 
 export type ResColor = {

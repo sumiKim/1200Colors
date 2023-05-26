@@ -3,7 +3,7 @@ import { config } from '../util/config';
 import React, { createContext, useContext, useState } from 'react';
 
 interface ISearchBoxContext {
-  searchType: string;
+  searchType: SearchType;
   searchKeyword: string;
   handleSearchType: (type: SearchType) => void;
   handleSearchKeyword: (keyword: string) => void;
@@ -22,6 +22,14 @@ type Props = {
 
 export type SearchType = 'colorname' | 'samhwa' | 'H V/C' | 'NCS' | 'Pantone';
 
+export function convertType(type: SearchType): string {
+  let converted: string = type;
+
+  if (type === 'colorname') converted = '색이름';
+  if (type === 'samhwa') converted = '삼화코드';
+
+  return converted;
+}
 type ResultCheckKeyword = {
   res: boolean;
   keyword: string;
@@ -81,7 +89,7 @@ const colornameSearchKeyword = [
 ];
 
 const checkKeyword = (
-  searchType: string,
+  searchType: SearchType,
   searchKeyword: string
 ): ResultCheckKeyword => {
   let r: ResultCheckKeyword = { res: false, keyword: '' };
@@ -105,11 +113,13 @@ const checkKeyword = (
   } else {
     r = { res: true, keyword: searchKeyword };
   }
-
   return r;
 };
 
-export const makeReqUrl = (searchType: string, searchKeyword: string) => {
+export const makeReqUrlForSchema = (
+  searchType: SearchType,
+  searchKeyword: string
+) => {
   let reqUrl = '';
 
   if (searchKeyword === '') {
@@ -121,4 +131,52 @@ export const makeReqUrl = (searchType: string, searchKeyword: string) => {
     }
   }
   return reqUrl;
+};
+
+export const makeReqUrlForColor = (
+  searchType: SearchType,
+  searchKeyword: string
+) => {
+  let reqUrl = '';
+
+  if (searchKeyword === '') {
+    reqUrl = `${config.server.baseURL}/color`;
+  } else {
+    switch (searchType) {
+      case 'colorname':
+        const result = checkKeyword(searchType, searchKeyword);
+        if (result.res) {
+          reqUrl = `${config.server.baseURL}/color?type=colorname&code=${result.keyword}`;
+        } else {
+          reqUrl = '';
+        }
+        break;
+      case 'samhwa':
+        reqUrl = `${config.server.baseURL}/color?type=samhwa&code=${searchKeyword}`;
+        break;
+      case 'H V/C':
+        reqUrl = `${config.server.baseURL}/color?type=hvc&code=${convertSpace(
+          searchKeyword
+        )}`;
+        break;
+      case 'NCS':
+        reqUrl = `${config.server.baseURL}/color?type=ncs&code=${convertSpace(
+          searchKeyword
+        )}`;
+        break;
+      case 'Pantone':
+        reqUrl = `${
+          config.server.baseURL
+        }/color?type=pantone&code=${convertSpace(searchKeyword)}`;
+        break;
+      default:
+        reqUrl = `${config.server.baseURL}/color`;
+        break;
+    }
+  }
+  return reqUrl;
+};
+
+const convertSpace = (keyword: string) => {
+  return keyword.replaceAll(' ', '%20');
 };
