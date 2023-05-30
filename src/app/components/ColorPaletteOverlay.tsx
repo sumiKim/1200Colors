@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import SearchBoxProvider from '../context/SearchBoxContext';
 import ColorPaletteOverlayBody from './ColorPaletteOverlayBody';
 import Button from './ui/Button';
 
@@ -59,7 +60,9 @@ export default function ColorPaletteOverlay({
         </ul>
         {/* Tab Body */}
         <div className='relative w-full h-full bg-white'>
-          <ColorPaletteOverlayBody activeTab={activeTab} />
+          <SearchBoxProvider>
+            <ColorPaletteOverlayBody activeTab={activeTab} />
+          </SearchBoxProvider>
         </div>
       </div>
     </section>

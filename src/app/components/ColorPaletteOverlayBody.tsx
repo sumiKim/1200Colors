@@ -4,15 +4,17 @@ import { useSelectedColor } from '../context/SelectedColorContext';
 import SearchBox from './SearchBox';
 import ChipForOverlay from './ui/colorchips/ChipForOverlay';
 import { Color, ResColors } from '@/service/type';
+import { useState } from 'react';
+import { makeReqUrlForColor, useSearchBox } from '../context/SearchBoxContext';
 
 type Props = {
   activeTab: string;
 };
 
 export default function ColorPaletteOverlayBody({ activeTab }: Props) {
-  const { data, isLoading, error } = useSWR<ResColors>(
-    `${config.server.baseURL}/color`
-  );
+  const { searchKeyword } = useSearchBox();
+  const reqUrl = makeReqUrlForColor('samhwa', searchKeyword);
+  const { data, isLoading, error } = useSWR<ResColors>(reqUrl !== '' && reqUrl);
   const { selectedList } = useSelectedColor();
 
   const colors: Color[] = data?.result.resColor ?? [];
