@@ -11,7 +11,7 @@ export default function ColorLayout({
   return (
     <>
       <SearchBoxProvider>
-        <PageTitle titleName='배색' badgeView={false} />
+        <PageTitle titleName='배색' badgeView={true} />
         <MyColorLeft />
         {children}
         <MyColorBottom />

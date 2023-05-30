@@ -1,17 +1,16 @@
-'use client';
-
-import { useState } from 'react';
-
 type Props = {
+  index: number;
   name: string;
+  isSelected: boolean;
+  handleClick: (index: number) => void;
 };
-export default function Badge({ name }: Props) {
-  const [select, setSelect] = useState(false);
+export default function Badge({ index, name, isSelected, handleClick }: Props) {
   return (
     <button
       className={`${
-        select ? 'font-bold' : 'text-gray-400'
+        isSelected ? 'font-bold' : 'text-gray-400'
       } border-[1px] border-grey-100 rounded py-0.5 px-1.5`}
+      onClick={() => handleClick(index)}
     >
       {name}
     </button>

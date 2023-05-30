@@ -7,29 +7,35 @@ interface ISearchBoxContext {
   searchKeyword: string;
   handleSearchType: (type: SearchType) => void;
   handleSearchKeyword: (keyword: string) => void;
+  badgeList: Array<string>;
+  isSelected: Array<boolean>;
+  handleClick: (index: number) => void;
+  initBadgeState: (index: number) => void;
 }
 
 const defaultState = {
-  searchType: '',
+  searchType: '' as SearchType,
   searchKeyword: '',
-  handleSearchType: () => {},
-  handleSearchKeyword: () => {},
-} as unknown as ISearchBoxContext;
+  handleSearchType: (type: SearchType) => {},
+  handleSearchKeyword: (keyword: string) => {},
+  badgeList: [] as any,
+  isSelected: [] as any,
+  handleClick: (index: number) => {},
+  initBadgeState: (index: number) => {},
+};
 
 type Props = {
   children: React.ReactNode;
 };
 
-export type SearchType = 'colorname' | 'samhwa' | 'H V/C' | 'NCS' | 'Pantone';
+export type SearchType =
+  | 'colorname'
+  | 'samhwa'
+  | 'H V/C'
+  | 'NCS'
+  | 'Pantone'
+  | 'adjective';
 
-export function convertType(type: SearchType): string {
-  let converted: string = type;
-
-  if (type === 'colorname') converted = '색이름';
-  if (type === 'samhwa') converted = '삼화코드';
-
-  return converted;
-}
 type ResultCheckKeyword = {
   res: boolean;
   keyword: string;
@@ -38,14 +44,37 @@ type ResultCheckKeyword = {
 export const SearchBoxContext = createContext(defaultState);
 
 export default function SearchBoxProvider({ children }: Props) {
-  const [searchType, setSearchType] = useState<SearchType>('colorname'); // 검색 타입 ?
-  const [searchKeyword, setSearchKeyword] = useState(''); // 검색 키워드 ?
+  // 키워드 겁색
+  const [searchType, setSearchType] = useState<SearchType>('colorname');
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const handleSearchType = (type: SearchType) => {
     setSearchType(type);
   };
   const handleSearchKeyword = (keyword: string) => {
     setSearchKeyword(keyword);
+  };
+
+  // 형용사 검색
+  const [isSelected, setIsSelected] = useState<boolean[]>([]);
+  const badgeList = ['편안한', '자연의', '모던한', '격조있는'];
+
+  const initBadgeState = (index: number) => {
+    const newArr = Array(badgeList.length).fill(false);
+
+    if (index !== -1) {
+      newArr[index] = true;
+    }
+
+    setIsSelected(newArr);
+  };
+
+  const handleClick = (index: number) => {
+    initBadgeState(index);
+
+    // 검색 url !
+    setSearchType('adjective');
+    setSearchKeyword(badgeList[index]);
   };
 
   return (
@@ -55,6 +84,10 @@ export default function SearchBoxProvider({ children }: Props) {
         searchKeyword,
         handleSearchType,
         handleSearchKeyword,
+        badgeList,
+        isSelected,
+        handleClick,
+        initBadgeState,
       }}
     >
       {children}
@@ -122,12 +155,15 @@ export const makeReqUrlForSchema = (
 ) => {
   let reqUrl = '';
 
-  if (searchKeyword === '') {
-    reqUrl = `${config.server.baseURL}/schema`;
+  if (searchType === 'adjective') {
   } else {
-    const result = checkKeyword(searchType, searchKeyword);
-    if (result.res) {
-      reqUrl = `${config.server.baseURL}/schema?type=${searchType}&code=${result.keyword}`;
+    if (searchKeyword === '') {
+      reqUrl = `${config.server.baseURL}/schema`;
+    } else {
+      const result = checkKeyword(searchType, searchKeyword);
+      if (result.res) {
+        reqUrl = `${config.server.baseURL}/schema?type=${searchType}&code=${result.keyword}`;
+      }
     }
   }
   return reqUrl;
@@ -180,3 +216,24 @@ export const makeReqUrlForColor = (
 const convertSpace = (keyword: string) => {
   return keyword.replaceAll(' ', '%20');
 };
+
+export function convertType(type: SearchType): string {
+  let converted: string = type;
+
+  if (type === 'colorname') converted = '색이름';
+  if (type === 'samhwa') converted = '삼화코드';
+  if (type === 'adjective') converted = '형용사';
+
+  return converted;
+}
+
+function converAdjective(adjective: string): string {
+  let converted: string = '';
+
+  if (adjective === '편안한') converted = '1';
+  if (adjective === '자연의') converted = '2';
+  if (adjective === '모던한') converted = '3';
+  if (adjective === '격조있는') converted = '4';
+
+  return converted;
+}

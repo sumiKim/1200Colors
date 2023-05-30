@@ -25,7 +25,8 @@ export default function SearchBox({
   menu,
   placeholder,
 }: Props) {
-  const { handleSearchType, handleSearchKeyword } = useSearchBox();
+  const { handleSearchType, handleSearchKeyword, initBadgeState } =
+    useSearchBox();
 
   const [open, setOpen] = useState(false);
   const [selectedType, setSelectedType] = useState<SearchType>('colorname');
@@ -44,10 +45,12 @@ export default function SearchBox({
     setInputKeyword('');
     setInputHVC({ H: '', V: '', C: '' });
     setSearchGuide(type.msg);
+    initBadgeState(-1);
     setOpen(!open);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    initBadgeState(-1);
     if (e.key === 'Enter') {
       handleSearchType(selectedType);
       if (selectedType === 'H V/C') {

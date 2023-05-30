@@ -15,7 +15,7 @@ export default function ColorPaletteOverlayBody({ activeTab }: Props) {
   );
   const { selectedList } = useSelectedColor();
 
-  const colors: Color[] = data?.result as Color[];
+  const colors: Color[] = data?.result.resColor ?? [];
 
   return (
     <div className='absolute top-0 w-full h-full overflow-scroll px-1 pb-1'>
