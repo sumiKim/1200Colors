@@ -9,6 +9,22 @@ body {
   width: 100%;
   height: 100%;
 }
+
+/* 스크롤 : Chrome, Whale, Edge */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c3c3;
+  border-radius: 12px 12px 12px 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
 .wrapper {
   height: auto;
   min-height: 100%;

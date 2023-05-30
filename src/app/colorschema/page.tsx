@@ -50,7 +50,7 @@ export default function ColorSchemaPage() {
           )}
           {space_in.length !== 0 && (
             <div className='mt-3 mb-2'>
-              <p className='flex text-md font-semibold px-2 py-2 gap-1'>
+              <p className='flex text-md font-semibold px-2 py-2 gap-1 items-center'>
                 <ArrowIcon />
                 내부
               </p>
@@ -65,7 +65,7 @@ export default function ColorSchemaPage() {
           )}
           {space_out.length !== 0 && (
             <div className='mt-3 mb-2'>
-              <p className='flex text-md font-semibold px-2 py-2 gap-1'>
+              <p className='flex text-md font-semibold px-2 py-2 gap-1 items-center'>
                 <ArrowIcon />
                 외부
               </p>
