@@ -47,15 +47,13 @@ export type ResColor = {
   result: Color;
 };
 
-export type ResSchemas = {
-  status: boolean;
-  result: {
-    searchType: string;
-    resColor: Schema[];
-  };
+export type ResSchema = {
+  searchType?: string;
+  inout_desc?: string;
+  resColor: Schema[];
 };
 
-export type ResSchema = {
+export type ResSchemas = {
   status: boolean;
-  result: Schema;
+  result: ResSchema[];
 };

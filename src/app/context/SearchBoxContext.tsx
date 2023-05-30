@@ -156,6 +156,7 @@ export const makeReqUrlForSchema = (
   let reqUrl = '';
 
   if (searchType === 'adjective') {
+    reqUrl = `${config.server.baseURL}/adjective/${searchKeyword}`;
   } else {
     if (searchKeyword === '') {
       reqUrl = `${config.server.baseURL}/schema`;

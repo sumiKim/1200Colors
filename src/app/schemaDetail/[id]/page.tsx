@@ -8,7 +8,7 @@ import DetailHeader from '@/app/components/DetailHeader';
 import ColorSchemaSquare from '@/app/components/ui/colorchips/ColorSchemaSquare';
 import ChipSchemaDetail from '@/app/components/ui/colorchips/ChipSchemaDetail';
 import Button from '@/app/components/ui/Button';
-import { ResSchema, Schema } from '@/service/type';
+import { ResSchemas, Schema } from '@/service/type';
 import Error from '@/app/components/ui/Error';
 
 type Props = { params: { id: string } };
@@ -18,11 +18,11 @@ export default function ColorDetailPage({ params: { id } }: Props) {
     NotFound();
   }
 
-  const { data, isLoading, error } = useSWR<ResSchema>(
+  const { data, isLoading, error } = useSWR<ResSchemas>(
     `${config.server.baseURL}/schema/${id}`
   );
 
-  const schema = data?.result;
+  const schema: Schema = data?.result[0].resColor[0] as Schema;
 
   const handleCustomColor = () => {
     window.location.href = `/customSchema/${id}`;
