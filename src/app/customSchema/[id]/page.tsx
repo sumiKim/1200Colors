@@ -24,19 +24,17 @@ export default function CustomSchemapage({ params: { id } }: Props) {
 
   const { schema, initColor, handleChangeArea } = useCustomSchema();
 
+  if (data !== undefined) {
+    const defaultSchema: Schema = data.result;
+    initColor({ ...defaultSchema });
+  }
+
   const [openEditArea, setOpenEditArea] = useState(false);
   const handleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
     const targetValue = e.currentTarget.value as SchemaArea;
     handleChangeArea(targetValue);
     setOpenEditArea(!openEditArea);
   };
-
-  useEffect(() => {
-    if (data !== undefined) {
-      const defaultSchema: Schema = data.result;
-      initColor({ ...defaultSchema });
-    }
-  }, [data]);
 
   return (
     <section className='max-w-screen-lg mx-auto flex flex-col p-5'>

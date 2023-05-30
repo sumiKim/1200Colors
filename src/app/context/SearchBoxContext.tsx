@@ -18,8 +18,8 @@ const defaultState = {
   searchKeyword: '',
   handleSearchType: (type: SearchType) => {},
   handleSearchKeyword: (keyword: string) => {},
-  badgeList: [] as any,
-  isSelected: [] as any,
+  badgeList: [] as Array<string>,
+  isSelected: [] as Array<boolean>,
   handleClick: (index: number) => {},
   initBadgeState: (index: number) => {},
 };
