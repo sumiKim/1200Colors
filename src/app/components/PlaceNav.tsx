@@ -1,23 +1,14 @@
+'use client';
+
+import { placeNav } from '../place/page';
 import PlaceNavItem from './PlaceNavItem';
 
-export type IPlaceNav = {
-  id: string;
-  type: string;
-  side?: string;
-  form?: string;
-  data?: string;
-};
-
-type Props = {
-  placeNav: IPlaceNav[];
-};
-
-export default function PlaceNav({ placeNav }: Props) {
+export default function PlaceNav() {
   return (
     <ul>
-      {placeNav.map(item => (
+      {placeNav.map((item, index) => (
         <li key={`web_${item.id}`}>
-          <PlaceNavItem item={item} useType={'web'} />
+          <PlaceNavItem index={index} item={item} useType={'web'} />
         </li>
       ))}
     </ul>
