@@ -28,7 +28,9 @@ export default function ChipCustom({
     <>
       <div className='flex mt-3 w-full h-20 flex-row'>
         <div
-          className='w-[70px] me-4 lg:basis-1/2 mb-2 lg:mb-0 lg:me-3'
+          className={`w-[70px] me-4 lg:basis-1/2 mb-2 lg:mb-0 lg:me-3 ${
+            color.border !== null ? 'border-line' : ''
+          }`}
           style={{ backgroundColor: `#${color.HEX}` }}
         />
         <div className='grow lg:basis-1/2 flex items-center'>

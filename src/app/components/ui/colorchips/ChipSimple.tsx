@@ -26,7 +26,11 @@ const defulatInfoSytle = {
 };
 
 export default function ChipSimple({ color, type }: Prop) {
-  const { samwha_code, HEX, HVC_H, HVC_V, HVC_C } = color;
+  console.log(color);
+  const { samwha_code, HEX, HVC_H, HVC_V, HVC_C, border } = color;
+
+  console.log(border);
+
   let style: Style = {
     id: '',
     wrap_style: '',
@@ -78,7 +82,9 @@ export default function ChipSimple({ color, type }: Prop) {
       <Link href={`/colorDetail/${samwha_code}`}>
         <div
           id={`${style.id}chip_${samwha_code}`}
-          className={`${style.div_style}`}
+          className={`${style.div_style} ${
+            color.border !== null ? 'border-line' : ''
+          }`}
           style={{ backgroundColor: `#${HEX}` }}
         />
       </Link>

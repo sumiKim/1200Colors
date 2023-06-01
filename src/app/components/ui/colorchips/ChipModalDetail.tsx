@@ -46,7 +46,7 @@ export default function ChipModalDetail({ color, style }: Props) {
           id={`chipmodal_${color.samwha_code}`}
           className={`rounded-lg m-3 ${
             style === 'simple' ? 'w-72 h-72' : ' w-full h-full'
-          }`}
+          } ${color.border !== null ? 'border-line' : ''}`}
           style={{ backgroundColor: `#${color.HEX}` }}
         />
         <div

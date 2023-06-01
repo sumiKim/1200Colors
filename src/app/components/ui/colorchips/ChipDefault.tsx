@@ -35,7 +35,9 @@ export default function ChipDefault({ color }: Props) {
     <>
       <button
         id={`${color.samwha_code}`}
-        className={`w-[72px] h-[72px] relative hover:scale-105 duration-200`}
+        className={`w-[72px] h-[72px] relative hover:scale-105 duration-200 ${
+          color.border !== null ? 'border-line' : ''
+        }`}
         style={{ backgroundColor: `#${color.HEX}` }}
         onClick={handleClick}
       >

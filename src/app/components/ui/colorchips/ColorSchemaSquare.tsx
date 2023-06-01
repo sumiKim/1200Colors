@@ -7,12 +7,14 @@ type Props = {
 };
 
 export default function ColorSchemaSquare({ schema, size }: Props) {
+  const border = borderCheck(schema);
+
   return (
     <Link href={`/schemaDetail/${schema.id}`}>
       <div
         className={`${
-          size === 'medium' ? 'w-44 h-44' : 'w-72 h-72 md:w-80 md:h-80'
-        }  rounded-md overflow-hidden`}
+          size === 'medium' ? 'w-44 h-44' : 'w-72 h-72 md:w-80 md:h-80 '
+        } rounded-md overflow-hidden ${border ? 'border-line' : ''}`}
       >
         <div
           id='base'
@@ -32,4 +34,16 @@ export default function ColorSchemaSquare({ schema, size }: Props) {
       </div>
     </Link>
   );
+}
+
+function borderCheck(schema: Schema): Boolean {
+  let borderCheck: boolean;
+
+  schema.base.border === null &&
+  schema.accent.border === null &&
+  schema.secondary.border === null
+    ? (borderCheck = false)
+    : (borderCheck = true);
+
+  return borderCheck;
 }

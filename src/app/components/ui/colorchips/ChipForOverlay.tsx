@@ -27,10 +27,11 @@ export default function ChipForOverlay({ color }: Prop) {
     >
       <div
         id={`overlay_myColorchip_${samwha_code}`}
-        className='basis-1/2 h-10'
+        className={`basis-1/2 h-10 ${
+          color.border !== null ? 'border-line' : ''
+        }`}
         style={{ backgroundColor: `#${HEX}` }}
       />
-
       <div
         className={
           'flex flex-col lg:flex-row ms-2 lg:items-center justify-center lg:gap-1'
