@@ -47,7 +47,7 @@ export default function PlaceImgs() {
           spaceImgs.map(img => (
             <li
               key={img.id}
-              className='relative w-60 h-60 lg:w-48 lg:h-48 xl:w-56 xl:h-56'
+              className='relative w-40 h-40 md:w-60 md:h-60 lg:w-48 lg:h-48 xl:w-56 xl:h-56'
             >
               <Link href={`/place/${img.image_id}`}>
                 <Image

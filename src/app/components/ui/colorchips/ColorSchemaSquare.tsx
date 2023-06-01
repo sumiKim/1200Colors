@@ -13,7 +13,9 @@ export default function ColorSchemaSquare({ schema, size }: Props) {
     <Link href={`/schemaDetail/${schema.id}`}>
       <div
         className={`${
-          size === 'medium' ? 'w-44 h-44' : 'w-72 h-72 md:w-80 md:h-80 '
+          size === 'medium'
+            ? ' w-40 h-40 md:w-44 md:h-44'
+            : 'w-72 h-72 md:w-80 md:h-80 '
         } rounded-md overflow-hidden ${border ? 'border-line' : ''}`}
       >
         <div

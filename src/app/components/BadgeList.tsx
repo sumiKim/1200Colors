@@ -7,7 +7,8 @@ export default function BadgeList() {
   const { badgeList, isSelected, handleClick } = useSearchBox();
 
   return (
-    <div className='w-full md:w-fit overflow-x-scroll whitespace-nowrap'>
+    // <div className='w-full overflow-x-scroll whitespace-nowrap'>
+    <div className='w-full flex justify-center'>
       <ul className='flex gap-4'>
         {badgeList.map((badge, index) => (
           <li key={index}>

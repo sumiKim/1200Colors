@@ -22,7 +22,7 @@ export default function HomePage() {
         src={TopImage}
         alt='배경'
       />
-      <div className='absolute left-20 bottom-20 lg:bottom-28 text-white'>
+      <div className='absolute left-5 bottom-20 md:left-20 md:bottom-20 lg:bottom-28 text-white'>
         <div className='text-brand text-2xl font-bold'>SAMHWA</div>
 
         <div className='text-3xl'>
@@ -33,7 +33,7 @@ export default function HomePage() {
         </div>
         <div className='absolute top-14 left-48 text-3xl ms-3'>+</div>
       </div>
-      <section className='flex px-10 xl:px-32 2xl:px-64'>
+      <section className='flex px-5 md:px-10 xl:px-32 2xl:px-64'>
         <div className='text-brand text-3xl sm:text-5xl md:text-6xl 2xl:text-7xl font-extrabold pt-10 pb-20'>
           <p>STEADY</p>
           <p>& TRENDY</p>
@@ -43,7 +43,7 @@ export default function HomePage() {
           <p>풍부하고 섬세한 뉘앙스</p>
         </div>
       </section>
-      <section className='px-10 xl:px-32 2xl:px-64 flex flex-col lg:flex-row bg-[#333333] text-white py-7'>
+      <section className='px-5 md:px-10 xl:px-32 2xl:px-64 flex flex-col lg:flex-row bg-[#333333] text-white py-7'>
         <div className='basis-2/3'>
           <button className='bg-brand text-white px-5 py-5 text-2xl'>
             About 삼화
@@ -51,7 +51,7 @@ export default function HomePage() {
         </div>
         <div className='basis-1/3 pt-8'>
           <div>
-            <p className='text-white text-base lg:text-sm xl:text-base 2xl:text-base font-thin'>
+            <p className='text-white text-sm md:text-base lg:text-sm xl:text-base 2xl:text-base font-thin'>
               삼화페인트는 페인트를 넘어 우리 생활을 이롭게 하는 <br></br>
               편의성, 안전함, 아름다움과 같은{' '}
               <span className='text-brand font-bold'>보이지 않는 가치</span>를
@@ -66,13 +66,13 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section className='flex px-10 xl:px-32 2xl:px-64 py-36 gap-5'>
+      <section className='flex px-5 md:px-10 xl:px-32 2xl:px-64 py-36 gap-5'>
         <MainBanner image={Banner1} title='컬러' link='/color' />
         <MainBanner image={Banner2} title='배색' link='/colorschema' />
         <MainBanner image={Banner3} title='공간' link='/place' />
       </section>
       <section className='flex flex-col md:flex-row xl:flex-col'>
-        <div className='flex flex-col basis-1/2 xl:flex-row px-10 xl:px-32 2xl:px-64 pt-8 pb-10 bg-[#828282] text-white'>
+        <div className='flex flex-col basis-1/2 xl:flex-row px-5 md:px-10 xl:px-32 2xl:px-64 pt-8 pb-10 bg-[#828282] text-white'>
           <div className='basis-1/3'>
             <p className='text-4xl md:text-5xl font-extrabold text-brand py-3 md:py-5'>
               About

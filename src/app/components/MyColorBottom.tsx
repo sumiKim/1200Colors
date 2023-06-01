@@ -5,7 +5,7 @@ import ChipSimple from './ui/colorchips/ChipSimple';
 
 export default function MyColorBottom() {
   const { selectedList } = useSelectedColor();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(!open);

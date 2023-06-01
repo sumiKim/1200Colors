@@ -19,9 +19,7 @@ export default function PageTitle({ titleName, badgeView }: Props) {
         {titleName === '컬러' && <SearchBox menu={colorMenu} />}
         {titleName === '배색' && <SearchBox menu={colorSchemaMenu} />}
 
-        <div className='flex justify-center'>
-          {badgeView ? <BadgeList /> : ''}
-        </div>
+        <div className='w-full'>{badgeView ? <BadgeList /> : ''}</div>
       </div>
     </div>
   );
