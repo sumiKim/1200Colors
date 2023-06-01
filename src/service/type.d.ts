@@ -22,6 +22,7 @@ export type Color = {
   'b*'?: string;
   NCS?: string;
   Pantone: string;
+  border: string | null;
 };
 
 //---> Schema

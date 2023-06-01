@@ -1,3 +1,4 @@
+import { useCustomPlaceContext } from '@/app/context/CustomPlaceContext';
 import { useCustomSchema } from '@/app/context/CustomSchemaContext';
 import { Color } from '@/service/type';
 
@@ -5,13 +6,20 @@ type Prop = {
   color: Color;
 };
 export default function ChipForOverlay({ color }: Prop) {
+  const { target, changePlaceColor, requestAPI } = useCustomPlaceContext();
   const { changeColor, changeArea } = useCustomSchema();
 
   const { samwha_code, HEX, HVC_H, HVC_V, HVC_C } = color;
 
   const handleClick = () => {
     if (changeArea !== undefined) changeColor(changeArea, color);
+    if (target !== '') {
+      const newArr = changePlaceColor(Number(target), color);
+      // 통신하기 ?
+      requestAPI(newArr);
+    }
   };
+
   return (
     <div
       className='flex flex-row w-full bg-white hover:bg-gray-200 p-1 mt-1 gap-1'

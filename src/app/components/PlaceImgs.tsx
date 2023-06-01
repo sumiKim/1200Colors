@@ -1,9 +1,9 @@
 'use client';
+import { placeNav } from '@/data/place';
 import Image from 'next/image';
 import Link from 'next/link';
 import useSWR from 'swr';
 import { usePlaceNavContext } from '../context/PlaceNavContext';
-import { placeNav } from '../place/page';
 import { config } from '../util/config';
 
 type ResSpace = {
@@ -14,8 +14,6 @@ type ResSpace = {
 type DataSpace = {
   default_color: null;
   directory: string;
-  encoded_url: string;
-  group_name: string;
   id: number;
   image_id: number;
   is_base: number;
@@ -26,6 +24,7 @@ type DataSpace = {
   medium: string;
   png_name: string;
   region_count: number;
+  thumbnail_url: string;
   url: string;
 };
 
@@ -54,7 +53,7 @@ export default function PlaceImgs() {
                 <Image
                   loader={imageLoader}
                   src={`${img.url}`}
-                  alt={img.directory}
+                  alt={img.thumbnail_url}
                   fill={true}
                 />
               </Link>

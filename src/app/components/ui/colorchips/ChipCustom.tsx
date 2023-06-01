@@ -8,11 +8,17 @@ import ChipModalDetail from './ChipModalDetail';
 import { Color } from '@/service/type';
 
 type Props = {
-  area: string;
+  area: string | number;
+  area_name?: string;
   color: Color;
   handleEdit?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
-export default function ChipCustom({ area, color, handleEdit }: Props) {
+export default function ChipCustom({
+  area,
+  area_name,
+  color,
+  handleEdit,
+}: Props) {
   const [openModal, setOpenModal] = useState(false);
   const handleOpenModal = () => {
     setOpenModal(!openModal);
@@ -26,9 +32,13 @@ export default function ChipCustom({ area, color, handleEdit }: Props) {
           style={{ backgroundColor: `#${color.HEX}` }}
         />
         <div className='grow lg:basis-1/2 flex items-center'>
-          <ColorInfo color={color} type={'simple'} />
+          <ColorInfo color={color} type={'simple'} description={area_name} />
           <Button icon={'info'} handleClick={handleOpenModal} />
-          <Button icon={'edit'} handleClick={handleEdit} edit_value={area} />
+          <Button
+            icon={'edit'}
+            handleClick={handleEdit}
+            edit_value={area.toString()}
+          />
         </div>
       </div>
 

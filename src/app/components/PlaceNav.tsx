@@ -1,6 +1,6 @@
 'use client';
 
-import { placeNav } from '../place/page';
+import { placeNav } from '@/data/place';
 import PlaceNavItem from './PlaceNavItem';
 
 export default function PlaceNav() {

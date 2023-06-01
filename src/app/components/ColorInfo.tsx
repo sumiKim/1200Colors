@@ -3,9 +3,10 @@ import { Color } from '@/service/type';
 type Props = {
   color: Color;
   type: 'color' | 'schema' | 'simple' | 'popup';
+  description?: string;
 };
 
-export default function ColorInfo({ color, type }: Props) {
+export default function ColorInfo({ color, type, description }: Props) {
   const colorFont = {
     samwha: 'text-3xl font-semibold me-5 ',
     munsell: 'text-lg text-sh_text89',
@@ -57,6 +58,9 @@ export default function ColorInfo({ color, type }: Props) {
             : 'flex flex-col'
         }
       >
+        {description && (
+          <div className=' text-sm text-sh_text126'>{description}</div>
+        )}
         <div className={`${font.samwha}`}>SH {`${color?.samwha_code}`}</div>
         <div
           className={`${font.munsell}`}
