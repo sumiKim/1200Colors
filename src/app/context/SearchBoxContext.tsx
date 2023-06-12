@@ -2,17 +2,6 @@
 import { config } from '../util/config';
 import React, { createContext, useContext, useState } from 'react';
 
-interface ISearchBoxContext {
-  searchType: SearchType;
-  searchKeyword: string;
-  handleSearchType: (type: SearchType) => void;
-  handleSearchKeyword: (keyword: string) => void;
-  badgeList: Array<string>;
-  isSelected: Array<boolean>;
-  handleClick: (index: number) => void;
-  initBadgeState: (index: number) => void;
-}
-
 const defaultState = {
   searchType: '' as SearchType,
   searchKeyword: '',
@@ -224,17 +213,6 @@ export function convertType(type: SearchType): string {
   if (type === 'colorname') converted = '색이름';
   if (type === 'samhwa') converted = '삼화코드';
   if (type === 'adjective') converted = '형용사';
-
-  return converted;
-}
-
-function converAdjective(adjective: string): string {
-  let converted: string = '';
-
-  if (adjective === '편안한') converted = '1';
-  if (adjective === '자연의') converted = '2';
-  if (adjective === '모던한') converted = '3';
-  if (adjective === '격조있는') converted = '4';
 
   return converted;
 }

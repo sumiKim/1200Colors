@@ -2,9 +2,7 @@
 import ColorPaletteOverlay from '@/app/components/ColorPaletteOverlay';
 import DetailHeader from '@/app/components/DetailHeader';
 import ChipCustom from '@/app/components/ui/colorchips/ChipCustom';
-import CustomPlaceProvider, {
-  useCustomPlaceContext,
-} from '@/app/context/CustomPlaceContext';
+import { useCustomPlaceContext } from '@/app/context/CustomPlaceContext';
 import { config } from '@/app/util/config';
 import { Color } from '@/service/type';
 import Image from 'next/image';
@@ -31,7 +29,7 @@ export type AreaColor = {
 };
 
 export default function PlaceDetailPage({ params: { id } }: Props) {
-  const { infos, setInfos, initInfo, handleChangeArea, blendImg } =
+  const { infos, initInfo, handleChangeArea, blendImg } =
     useCustomPlaceContext();
 
   const { data, isLoading, error } = useSWR<ResSpaceImg>(

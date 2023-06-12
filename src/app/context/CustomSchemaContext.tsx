@@ -1,38 +1,7 @@
 'use client';
 import { createContext, useContext, useState } from 'react';
 import { Color, Schema } from '@/service/type';
-
-let DefaultColor = {
-  id: 0,
-  page_num: '',
-  samwha_code: '',
-  color_group: '',
-  munsell: '',
-  color: '',
-  HVC_H: '',
-  HVC_V: '',
-  HVC_C: '',
-  R: 0,
-  G: 0,
-  B: 0,
-  HEX: '',
-  C: 0,
-  M: 0,
-  Y: 0,
-  K: 0,
-  'L*': '',
-  'a*': '',
-  'b*': '',
-  NCS: '',
-  Pantone: '',
-};
-
-let DefaultColorSchema = {
-  id: '',
-  secondary: { ...DefaultColor },
-  accent: { ...DefaultColor },
-  base: { ...DefaultColor },
-};
+import { DefaultColorSchema } from '@/data/defaultData';
 
 type Props = {
   children: React.ReactNode;

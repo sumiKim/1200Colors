@@ -1,7 +1,7 @@
 'use client';
 import useSWR from 'swr';
 import ChipDefault from '../components/ui/colorchips/ChipDefault';
-import { Color, ResColors } from '@/service/type';
+import { ResColors } from '@/service/type';
 import Error from '../components/ui/Error';
 import { makeReqUrlForColor, useSearchBox } from '../context/SearchBoxContext';
 import NoSearchResults from '../components/ui/NoSearchResults';
@@ -29,12 +29,6 @@ export default function ColorPage() {
                   <ChipDefault color={color} />
                 </li>
               ))}
-              {/* {data?.result.nearbyColor !== undefined &&
-                data?.result.nearbyColor.map(color => (
-                  <li key={color.samwha_code} data-value={color.id}>
-                    <ChipDefault color={color} />
-                  </li>
-                ))} */}
             </ul>
           )}
           {colors?.length === 1 && data?.result.nearbyColor !== undefined && (

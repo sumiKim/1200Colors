@@ -10,38 +10,6 @@ import {
 import { AreaColor } from '../place/[id]/page';
 import { config } from '../util/config';
 
-let DefaultColor = {
-  id: 0,
-  page_num: '',
-  samwha_code: '',
-  color_group: '',
-  munsell: '',
-  color: '',
-  HVC_H: '',
-  HVC_V: '',
-  HVC_C: '',
-  R: 0,
-  G: 0,
-  B: 0,
-  HEX: '',
-  C: 0,
-  M: 0,
-  Y: 0,
-  K: 0,
-  'L*': '',
-  'a*': '',
-  'b*': '',
-  NCS: '',
-  Pantone: '',
-};
-
-let DefaultColorSchema = {
-  id: '',
-  secondary: { ...DefaultColor },
-  accent: { ...DefaultColor },
-  base: { ...DefaultColor },
-};
-
 type Props = {
   children: React.ReactNode;
 };
@@ -110,12 +78,6 @@ export default function CustomPlaceProvider({ children }: Props) {
   };
 
   const requestAPI = async (arr: AreaColor[]) => {
-    // console.log('infos');
-    // console.log(infos);
-
-    // console.log('arr');
-    console.log(arr);
-
     // 요청 컬러 배열 만들기
     const reqColors: string[] = [];
     arr.map(c => {
@@ -129,9 +91,6 @@ export default function CustomPlaceProvider({ children }: Props) {
       region_image_ids: regionImgs,
       region_colors: reqColors,
     };
-
-    console.log('blend요청');
-    console.log(data);
 
     const res = await fetch(`${config.server.baseURL}/space/image_blend`, {
       method: 'POST',

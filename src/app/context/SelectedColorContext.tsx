@@ -34,13 +34,11 @@ export default function SelectedColorProvider({ children }: Props) {
     setSelectedList([...storageData]);
   }, []);
 
-  // 이거는 팔레트 싱크 맞음
   const insertColor = (selectedColor: Color) => {
     setSelectedList(prev => [...prev, selectedColor]);
     insertDataAtStorage(selectedColor);
   };
 
-  // 이거는 팔레트 싱크 안맞음
   const removeColor = (selectedColor: Color) => {
     setSelectedList(
       selectedList.filter(
