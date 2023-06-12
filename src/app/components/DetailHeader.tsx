@@ -1,12 +1,12 @@
 'use client';
-import { jsPDF } from 'jspdf';
-import autoTable from 'jspdf-autotable';
+
 import { useState } from 'react';
 import { useSelectedColor } from '../context/SelectedColorContext';
 import DivideIcon from './ui/icons/DivideIcon';
 import HomeIcon from './ui/icons/HomeIcon';
 import Button from './ui/Button';
 import { Color } from '@/service/type';
+import { makeColorPDF } from '@/service/pdf';
 
 type Props = {
   color?: Color;
@@ -36,109 +36,8 @@ export default function DetailHeader({ color, title, subtitle }: Props) {
   };
 
   const handlePDFClick = () => {
-    let doc = new jsPDF({ putOnlyUsedFonts: true, orientation: 'portrait' });
-
-    autoTable(doc, {
-      theme: 'grid',
-      headStyles: {
-        halign: 'center',
-        fontSize: 25,
-        fillColor: [255, 255, 255],
-        textColor: [0, 0, 0],
-      },
-      tableWidth: 'wrap',
-      head: [[{ content: ``, colSpan: 3 }]],
-      columnStyles: { 0: { halign: 'center', fillColor: color?.HEX } },
-      body: [
-        [
-          {
-            content: [''],
-            rowSpan: 8,
-            styles: { halign: 'center', minCellWidth: 60, minCellHeight: 30 },
-          },
-          {
-            content: 'Samwha Code',
-            styles: { valign: 'middle' },
-          },
-          {
-            content: `SH ${color?.samwha_code}`,
-            styles: { valign: 'middle' },
-          },
-        ],
-        [
-          {
-            content: 'H V/C',
-            styles: { valign: 'middle' },
-          },
-          {
-            content: `${color?.munsell}`,
-            styles: { valign: 'middle' },
-          },
-        ],
-        [
-          {
-            content: 'L*a*b*',
-            styles: { valign: 'middle' },
-          },
-          {
-            content: `${color?.['L*']} / ${color?.['a*']} / ${color?.['b*']}`,
-            styles: { valign: 'middle' },
-          },
-        ],
-        [
-          {
-            content: 'RGB',
-            styles: { valign: 'middle' },
-          },
-          {
-            content: `${color?.R} / ${color?.G} / ${color?.B}`,
-            styles: { valign: 'middle' },
-          },
-        ],
-        [
-          {
-            content: 'CMYK',
-            styles: { valign: 'middle' },
-          },
-          {
-            content: `${color?.C} / ${color?.M} / ${color?.Y} / ${color?.K}`,
-            styles: { valign: 'middle' },
-          },
-        ],
-        [
-          {
-            content: 'HEX',
-            styles: { valign: 'middle' },
-          },
-          {
-            content: `#${color?.HEX}`,
-            styles: { valign: 'middle' },
-          },
-        ],
-        [
-          {
-            content: 'NCS',
-            styles: { valign: 'middle' },
-          },
-          {
-            content: `${color?.NCS}`,
-            styles: { valign: 'middle' },
-          },
-        ],
-        [
-          {
-            content: 'Pantone',
-            styles: { valign: 'middle' },
-          },
-          {
-            content: `${color?.Pantone}`,
-            styles: { valign: 'middle' },
-          },
-        ],
-      ],
-    });
-
-    doc.save(`SH_${color?.samwha_code}`);
+    if (!color) return;
+    makeColorPDF(color, color.samwha_code);
   };
 
   return (
