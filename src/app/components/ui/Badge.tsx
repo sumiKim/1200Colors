@@ -9,7 +9,7 @@ export default function Badge({ index, name, isSelected, handleClick }: Props) {
     <button
       className={`${
         isSelected ? 'font-bold' : 'text-gray-400'
-      } border-[1px] border-grey-100 rounded py-0.5 px-1.5`}
+      } border-[1px] border-grey-100 rounded px-1 py-1 sm:py-0.5 sm:px-1.5 text-sm`}
       onClick={() => handleClick(index)}
     >
       {name}

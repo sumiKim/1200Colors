@@ -27,14 +27,11 @@ export default function ColorPaletteOverlayBody({ activeTab }: Props) {
     <div className='absolute top-0 w-full h-full overflow-scroll px-1 pb-1'>
       {activeTab === 'Search' && (
         <>
-          <div className='sticky top-0 py-2 bg-white'>
-            <SearchBox
-              dropdown={false}
-              placeholder={'삼화 코드명을 검색해보세요'}
-              reqSearch={setSearchColor}
-            />
-          </div>
-
+          <SearchBox
+            dropdown={false}
+            placeholder={'삼화 코드명을 검색해보세요'}
+            reqSearch={setSearchColor}
+          />
           {colors && (
             <ul className='flex flex-col gap-1'>
               {colors.map(color => (

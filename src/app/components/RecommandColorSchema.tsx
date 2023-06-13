@@ -20,7 +20,7 @@ export default function RecommandColorSchema({ color }: Props) {
   return (
     <div className=' mt-10'>
       <span className='text-lg font-medium'>추천배색</span>
-      <div className='flex mt-2'>
+      <div className='flex flex-col md:flex-row mt-2 gap-2'>
         {result && result.status && (
           <ColorSchemaSquare
             schema={result.result[0].resColor[0]}
@@ -28,7 +28,7 @@ export default function RecommandColorSchema({ color }: Props) {
           />
         )}
 
-        <div className='grow ps-5 flex flex-col justify-end gap-2'>
+        <div className='grow md:ps-5 flex flex-col justify-end gap-2'>
           {result && result.status && (
             <ChipSimple
               color={result.result[0].resColor[0].base}

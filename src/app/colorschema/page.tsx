@@ -45,14 +45,13 @@ export default function ColorSchemaPage() {
 
   return (
     <>
-      <div className='relative z-30 w-full h-32 flex bg-white border-b-2'>
+      <div className='relative z-30 w-full h-24 flex bg-white border-b-2'>
         <div className='hidden lg:block w-56 font-bold text-2xl text-right pt-6 pr-16'>
           배색
         </div>
-        <div className='flex flex-col max-w-xs sm:max-w-md md:max-w-3xl lg:w-full mx-auto justify-center gap-3'>
-          <SearchBox menu={colorSchemaMenu} reqSearch={setSearchColor} />
-          <BadgeList reqSearch={setSearchColor} />
-        </div>
+        <SearchBox menu={colorSchemaMenu} reqSearch={setSearchColor} />
+
+        {/* <BadgeList reqSearch={setSearchColor} /> */}
       </div>
       <div className='bg-white h-screen lg:pl-60 lg:pr-5 lg:pt-4 flex justify-center'>
         <div className='h-3/4 w-fit overflow-scroll'>
@@ -68,7 +67,7 @@ export default function ColorSchemaPage() {
               <ul className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 text-center gap-2 p-2 w-fit'>
                 {schemas.map(schema => (
                   <li key={schema.id}>
-                    <ColorSchemaSquare schema={schema} size={'medium'} />
+                    <ColorSchemaSquare schema={schema} size={'small'} />
                   </li>
                 ))}
               </ul>
@@ -82,7 +81,7 @@ export default function ColorSchemaPage() {
                 <ul className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 text-center gap-2 p-2 w-fit'>
                   {space_in.map(schema => (
                     <li key={schema.id}>
-                      <ColorSchemaSquare schema={schema} size={'medium'} />
+                      <ColorSchemaSquare schema={schema} size={'small'} />
                     </li>
                   ))}
                 </ul>
@@ -97,7 +96,7 @@ export default function ColorSchemaPage() {
                 <ul className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 text-center gap-2 p-2 w-fit'>
                   {space_out.map(schema => (
                     <li key={schema.id}>
-                      <ColorSchemaSquare schema={schema} size={'medium'} />
+                      <ColorSchemaSquare schema={schema} size={'small'} />
                     </li>
                   ))}
                 </ul>

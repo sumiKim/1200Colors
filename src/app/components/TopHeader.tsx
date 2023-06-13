@@ -35,7 +35,7 @@ export default function TopHeader() {
           <li
             id={item.id}
             key={item.href}
-            className={`flex flex-auto lg:flex-none justify-center px-8 py-5 text-lg 
+            className={`flex flex-auto lg:flex-none justify-center px-4 py-4 sm:px-8 sm:py-5 text-md sm:text-lg 
               ${
                 pathName === item.href
                   ? 'text-white font-bold'

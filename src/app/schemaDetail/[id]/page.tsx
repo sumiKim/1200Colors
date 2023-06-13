@@ -41,7 +41,7 @@ export default function ColorDetailPage({ params: { id } }: Props) {
             <div className='basis-1/3'>
               <ColorSchemaSquare schema={schema} size={'large'} />
             </div>
-            <div className='basis-2/3 flex flex-col justify-between'>
+            <div className='basis-2/3 flex flex-col justify-between gap-3'>
               <div className='flex justify-end gap-1'>
                 <Button icon='pdf' handleClick={handlePDFClick} />
                 <Button

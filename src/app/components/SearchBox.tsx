@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import Button from './ui/Button';
 import { Menu, SearchType } from '@/data/searchBox';
 import { convertType, SearchValue } from '@/service/search';
+import BadgeList from './BadgeList';
 
 type Props = {
   dropdown?: boolean;
@@ -55,15 +56,20 @@ export default function SearchBox({
     }
   };
 
+  const handleSearchEvent = () => {
+    reqSearch({ searchType: selectedType, searchKeyword: inputKeyword });
+  };
+
   return (
-    <div className='flex flex-row w-full gap-1'>
+    <div className='flex flex-col md:flex-row grow items-center md:items-baseline md:pt-6 justify-center gap-2 px-3 md:max-w-5xl lg:mx-auto'>
       {/* dropdown */}
       {dropdown && (
-        <div className='relative flex flex-col items-center'>
+        // <div className='relative flex flex-col items-center'>
+        <div className='relative w-full md:basis-1/5 flex flex-col items-center'>
           <button
             id='dropdownDefaultButton'
             data-dropdown-toggle='dropdown'
-            className='border-[1px] border-grey-100 text-black font-bold focus:outline-none rounded px-3 py-1.5 md:px-5 w-32 text-center inline-flex items-center justify-between active:border-black'
+            className='w-full border-[1px] border-grey-100 text-black font-bold focus:outline-none rounded px-3 py-1.5 md:px-5 text-center inline-flex items-center justify-between active:border-black'
             type='button'
             onClick={handleClick}
           >
@@ -90,14 +96,14 @@ export default function SearchBox({
               className={`absolute mt-10 w-full z-10 bg-white rounded-lg shadow`}
             >
               <ul
-                className='py-2 text-sm text-gray-700 dark:text-gray-200'
+                className='py-2 text-sm text-gray-700'
                 aria-labelledby='dropdownDefaultButton'
               >
                 {menu &&
                   menu.map(item => (
                     <li key={item.key}>
                       <a
-                        className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                        className='block px-4 py-2 hover:bg-gray-100'
                         onClick={() => changeSearchType(item)}
                       >
                         {convertType(item.value)}
@@ -109,22 +115,22 @@ export default function SearchBox({
           )}
         </div>
       )}
-      {selectedType !== 'H V/C' && (
+      {selectedType !== 'H V/C' && selectedType !== 'adjective' && (
         <input
           type='text'
           placeholder={searchGuide}
-          className='border-[1px] border-grey-100 focus:outline-none rounded px-2 grow bg-[#EEEEEE]'
+          className='w-full md:basis-4/5 border-[1px] border-grey-100 focus:outline-none rounded px-2 py-1.5 bg-[#EEEEEE] grow'
           value={inputKeyword}
           onChange={e => setInputKeyword(e.target.value)}
           onKeyDown={handleKeyDown}
         ></input>
       )}
       {selectedType == 'H V/C' && (
-        <>
+        <div className='w-full inline-grid grid-cols-3 gap-2'>
           <input
             type='text'
             placeholder={'H'}
-            className='border-[1px] border-grey-100 focus:outline-none rounded px-2 grow bg-[#EEEEEE]'
+            className='border-[1px] border-grey-100 focus:outline-none rounded px-2 py-1.5 bg-[#EEEEEE]'
             value={inputHVC.H}
             onChange={e => setInputHVC({ ...inputHVC, H: e.target.value })}
             onKeyDown={handleKeyDown}
@@ -132,26 +138,31 @@ export default function SearchBox({
           <input
             type='text'
             placeholder={'V'}
-            className='border-[1px] border-grey-100 focus:outline-none rounded px-2 grow bg-[#EEEEEE]'
+            className='border-[1px] border-grey-100 focus:outline-none rounded px-2 py-1.5 bg-[#EEEEEE]'
             value={inputHVC.V}
             onChange={e => setInputHVC({ ...inputHVC, V: e.target.value })}
             onKeyDown={handleKeyDown}
           ></input>
-          <div className='flex items-center text-3xl text-[#9ba3af]'>/</div>
+          {/* <span className='flex items-center text-3xl text-[#9ba3af]'>/</span> */}
           <input
             type='text'
             placeholder={'C'}
-            className='border-[1px] border-grey-100 focus:outline-none rounded px-2 grow bg-[#EEEEEE]'
+            className='block border-[1px] border-grey-100 focus:outline-none rounded px-2 py-1.5 bg-[#EEEEEE]'
             value={inputHVC.C}
             onChange={e => setInputHVC({ ...inputHVC, C: e.target.value })}
             onKeyDown={handleKeyDown}
           ></input>
-        </>
+        </div>
       )}
+      {selectedType == 'adjective' && <BadgeList reqSearch={reqSearch} />}
 
       {!dropdown && (
         <div>
-          <Button icon='search' border={false} />
+          <Button
+            icon='search'
+            border={false}
+            handleClick={handleSearchEvent}
+          />
         </div>
       )}
     </div>

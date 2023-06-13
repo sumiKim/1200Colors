@@ -9,19 +9,21 @@ import Banner3 from './public/home/5.jpeg';
 export default function HomePage() {
   return (
     <div className='flex flex-col'>
-      {/* <div className='sm:bg-yellow-400 md:bg-green-600  lg:bg-blue-600 xl:bg-violet-900 2xl:bg-red-600 text-white'>
+      <div className='bg-pink-400 sm:bg-yellow-400 md:bg-green-600  lg:bg-blue-600 xl:bg-violet-900 2xl:bg-red-600 text-white'>
         반응형<br></br>
         2xl: 빨 <br></br>
         xl: 보<br></br>
         lg: 파 <br></br>
         md: 초 <br></br>
         sm: 노 <br></br>
-      </div> */}
+        default: 분홍 <br></br>
+      </div>
       <Image
         className='w-full h-screen object-cover'
         src={TopImage}
         alt='배경'
       />
+
       <div className='absolute left-5 bottom-20 md:left-20 md:bottom-20 lg:bottom-28 text-white'>
         <div className='text-brand text-2xl font-bold'>SAMHWA</div>
 
@@ -33,25 +35,25 @@ export default function HomePage() {
         </div>
         <div className='absolute top-14 left-48 text-3xl ms-3'>+</div>
       </div>
-      <section className='flex px-5 md:px-10 xl:px-32 2xl:px-64'>
-        <div className='text-brand text-3xl sm:text-5xl md:text-6xl 2xl:text-7xl font-extrabold pt-10 pb-20'>
+      <section className='w-full flex flex-col sm:flex-row px-5 py-10 md:px-10 xl:px-32 2xl:px-64 sm:justify-between sm:items-center'>
+        <div className='text-brand text-2xl sm:text-5xl md:text-6xl 2xl:text-7xl font-extrabold'>
           <p>STEADY</p>
           <p>& TRENDY</p>
         </div>
-        <div className='grow flex flex-col text-sm sm:text-2xl md:text-3xl 2xl:text-4xl font-bold pt-10 pb-20 items-end'>
+        <div className='flex flex-col text-sm sm:text-2xl md:text-3xl 2xl:text-4xl font-bold items-end'>
           <p>스테디 & 트랜디 컬러의</p>
           <p>풍부하고 섬세한 뉘앙스</p>
         </div>
       </section>
       <section className='px-5 md:px-10 xl:px-32 2xl:px-64 flex flex-col lg:flex-row bg-[#333333] text-white py-7'>
         <div className='basis-2/3'>
-          <button className='bg-brand text-white px-5 py-5 text-2xl'>
+          <button className='bg-brand text-white px-5 py-5 text-lg sm:text-2xl'>
             About 삼화
           </button>
         </div>
         <div className='basis-1/3 pt-8'>
           <div>
-            <p className='text-white text-sm md:text-base lg:text-sm xl:text-base 2xl:text-base font-thin'>
+            <p className='text-white text-base sm:text-sm md:text-base lg:text-sm xl:text-base 2xl:text-base font-thin'>
               삼화페인트는 페인트를 넘어 우리 생활을 이롭게 하는 <br></br>
               편의성, 안전함, 아름다움과 같은{' '}
               <span className='text-brand font-bold'>보이지 않는 가치</span>를
@@ -59,10 +61,10 @@ export default function HomePage() {
               제공하기 위해 진화하고 발전해 왔습니다.
             </p>
           </div>
-          <div className='flex gap-3 mt-10'>
-            <button className='border-2 px-3 xl:px-5 py-3'>#편의성</button>
-            <button className='border-2 px-3 xl:px-5 py-3'>#안전함</button>
-            <button className='border-2 px-3 xl:px-5 py-3'>#아름다움</button>
+          <div className='flex gap-1 sm:gap-3 mt-10'>
+            <button className='border-2 px-2 xl:px-5 py-3'>#편의성</button>
+            <button className='border-2 px-2 xl:px-5 py-3'>#안전함</button>
+            <button className='border-2 px-2 xl:px-5 py-3'>#아름다움</button>
           </div>
         </div>
       </section>

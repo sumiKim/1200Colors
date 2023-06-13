@@ -37,7 +37,7 @@ export default function ChipModalDetail({ color, style }: Props) {
     <section
       className={`${
         style === 'simple'
-          ? 'w-80 h-96'
+          ? 'w-64 h-80'
           : 'w-72 h-[500px] lg:w-[550px] lg:h-[600px]'
       } bg-white rounded-lg flex flex-col`}
     >
@@ -45,14 +45,14 @@ export default function ChipModalDetail({ color, style }: Props) {
         <div
           id={`chipmodal_${color.samwha_code}`}
           className={`rounded-lg m-3 ${
-            style === 'simple' ? 'w-72 h-72' : ' w-full h-full'
+            style === 'simple' ? 'w-56 h-56' : ' w-full h-full'
           } ${color.border !== null ? 'border-line' : ''}`}
           style={{ backgroundColor: `#${color.HEX}` }}
         />
         <div
           className={`${
             style === 'simple'
-              ? 'flex w-72 justify-between'
+              ? 'flex w-56 justify-between'
               : 'flex w-full justify-between lg:px-3 pb-3 lg:justify-center'
           }`}
         >

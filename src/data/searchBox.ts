@@ -51,4 +51,9 @@ export const colorSchemaMenu: Menu[] = [
     value: 'samhwa',
     msg: '삼화코드으로 검색해보세요.',
   },
+  {
+    key: 3,
+    value: 'adjective',
+    msg: '',
+  },
 ];

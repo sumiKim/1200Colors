@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 type Props = {
   schema: Schema;
-  size: 'medium' | 'large';
+  size: 'small' | 'medium' | 'large';
 };
 
 export default function ColorSchemaSquare({ schema, size }: Props) {
@@ -13,9 +13,11 @@ export default function ColorSchemaSquare({ schema, size }: Props) {
     <Link href={`/schemaDetail/${schema.id}`}>
       <div
         className={`${
-          size === 'medium'
-            ? ' w-40 h-40 md:w-44 md:h-44'
-            : 'w-72 h-72 md:w-80 md:h-80 '
+          size === 'small'
+            ? 'w-28 h-28 md:w-40 md:h-40'
+            : size === 'medium'
+            ? 'w-40 h-40 md:w-44 md:h-44'
+            : 'w-60 h-60 md:w-80 md:h-80 '
         } rounded-md overflow-hidden ${border ? 'border-line' : ''}`}
       >
         <div
