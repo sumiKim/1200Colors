@@ -24,8 +24,23 @@ type ContextProps = {
 };
 
 const defaultValue = {
-  selectedIndex: 0,
-  selected: [],
+  selectedIndex: 2,
+  selected: [
+    false,
+    false,
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ],
   handleSetSelected: () => {},
   handleClick: (id: number) => {},
 };
@@ -41,8 +56,6 @@ export default function PlaceNavProvider({ children }: Props) {
 
   const handleSetSelected = () => {};
   const handleClick = (id: number) => {
-    console.log('click');
-    console.log(id);
     const newArr = new Array(14).fill(false);
     newArr[id] = true;
     setSelected(newArr);

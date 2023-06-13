@@ -9,6 +9,7 @@ export const placeNav: IPlaceNav[] = [
     side: '외부',
     form: '주거',
     data: '단독주택',
+    param: 'detached_house',
   },
   {
     id: '4',
@@ -16,6 +17,7 @@ export const placeNav: IPlaceNav[] = [
     side: '외부',
     form: '주거',
     data: '공용주택',
+    param: 'apartment',
   },
   { id: '5', type: 'form', side: '외부', form: '상업' },
   {
@@ -24,6 +26,7 @@ export const placeNav: IPlaceNav[] = [
     side: '외부',
     form: '상업',
     data: '저층',
+    param: 'low-rise_building',
   },
   {
     id: '7',
@@ -31,6 +34,7 @@ export const placeNav: IPlaceNav[] = [
     side: '외부',
     form: '상업',
     data: '중고층',
+    param: 'high-rise_building',
   },
   { id: '8', type: 'side', side: '내부' },
   { id: '9', type: 'form', side: '내부', form: '주거공간' },
@@ -40,6 +44,7 @@ export const placeNav: IPlaceNav[] = [
     side: '내부',
     form: '주거공간',
     data: '거실',
+    param: 'living_room',
   },
   {
     id: '11',
@@ -47,6 +52,7 @@ export const placeNav: IPlaceNav[] = [
     side: '내부',
     form: '주거공간',
     data: '침실',
+    param: 'bed_room',
   },
   {
     id: '12',
@@ -54,6 +60,7 @@ export const placeNav: IPlaceNav[] = [
     side: '내부',
     form: '주거공간',
     data: '식당',
+    param: 'dining_room',
   },
   { id: '13', type: 'form', side: '내부', form: '상업공간' },
   {

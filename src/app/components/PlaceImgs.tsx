@@ -42,7 +42,7 @@ export default function PlaceImgs() {
 
   return (
     <div className='w-full h-fit flex items-center justify-center'>
-      <ul className='grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-3'>
+      <ul className='grid grid-cols-2 gap-4 md:gap-3'>
         {spaceImgs &&
           spaceImgs.map(img => (
             <li
