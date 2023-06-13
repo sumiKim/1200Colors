@@ -1,4 +1,10 @@
-import { SearchType } from '@/app/context/SearchBoxContext';
+export type SearchType =
+  | 'colorname'
+  | 'samhwa'
+  | 'H V/C'
+  | 'NCS'
+  | 'Pantone'
+  | 'adjective';
 
 export type Menu = {
   key: number;

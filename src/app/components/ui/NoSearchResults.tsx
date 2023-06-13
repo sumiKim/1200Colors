@@ -1,4 +1,5 @@
-import { convertType, SearchType } from '@/app/context/SearchBoxContext';
+import { SearchType } from '@/data/searchBox';
+import { convertType } from '@/service/search';
 import SearchIcon from './icons/SearchIcon';
 
 type Props = {

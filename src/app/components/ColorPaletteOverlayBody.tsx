@@ -1,19 +1,23 @@
 import useSWR from 'swr';
-import { config } from '../util/config';
 import { useSelectedColor } from '../context/SelectedColorContext';
 import SearchBox from './SearchBox';
 import ChipForOverlay from './ui/colorchips/ChipForOverlay';
 import { Color, ResColors } from '@/service/type';
 import { useState } from 'react';
-import { makeReqUrlForColor, useSearchBox } from '../context/SearchBoxContext';
+import { makeReqUrlForColor, SearchValue } from '@/service/search';
 
 type Props = {
   activeTab: string;
 };
 
 export default function ColorPaletteOverlayBody({ activeTab }: Props) {
-  const { searchKeyword } = useSearchBox();
-  const reqUrl = makeReqUrlForColor('samhwa', searchKeyword);
+  const [searchColor, setSearchColor] = useState<SearchValue>({
+    searchType: 'samhwa',
+    searchKeyword: '',
+  });
+
+  const reqUrl = makeReqUrlForColor('samhwa', searchColor.searchKeyword);
+
   const { data, isLoading, error } = useSWR<ResColors>(reqUrl !== '' && reqUrl);
   const { selectedList } = useSelectedColor();
 
@@ -27,6 +31,7 @@ export default function ColorPaletteOverlayBody({ activeTab }: Props) {
             <SearchBox
               dropdown={false}
               placeholder={'삼화 코드명을 검색해보세요'}
+              reqSearch={setSearchColor}
             />
           </div>
 

@@ -1,17 +1,14 @@
 'use client';
-import { useState } from 'react';
-import {
-  convertType,
-  SearchType,
-  useSearchBox,
-} from '../context/SearchBoxContext';
+import { Dispatch, SetStateAction, useState } from 'react';
 import Button from './ui/Button';
-import { Menu } from '@/data/searchBox';
+import { Menu, SearchType } from '@/data/searchBox';
+import { convertType, SearchValue } from '@/service/search';
 
 type Props = {
   dropdown?: boolean;
   menu?: Menu[];
   placeholder?: string;
+  reqSearch: Dispatch<SetStateAction<SearchValue>>;
 };
 
 type HVC = {
@@ -24,10 +21,8 @@ export default function SearchBox({
   dropdown = true,
   menu,
   placeholder,
+  reqSearch,
 }: Props) {
-  const { handleSearchType, handleSearchKeyword, initBadgeState } =
-    useSearchBox();
-
   const [open, setOpen] = useState(false);
   const [selectedType, setSelectedType] = useState<SearchType>('colorname');
   const [inputKeyword, setInputKeyword] = useState('');
@@ -45,20 +40,18 @@ export default function SearchBox({
     setInputKeyword('');
     setInputHVC({ H: '', V: '', C: '' });
     setSearchGuide(type.msg);
-    initBadgeState(-1);
+    // initBadgeState(-1);
     setOpen(!open);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    initBadgeState(-1);
+    // initBadgeState(-1);
     if (e.key === 'Enter') {
-      handleSearchType(selectedType);
+      let searchKeyword = '';
       if (selectedType === 'H V/C') {
-        const HVC_keyword = `${inputHVC.H}  ${inputHVC.V}/${inputHVC.C}`;
-        handleSearchKeyword(HVC_keyword);
-      } else {
-        handleSearchKeyword(inputKeyword);
+        searchKeyword = `${inputHVC.H}  ${inputHVC.V}/${inputHVC.C}`;
       }
+      reqSearch({ searchType: selectedType, searchKeyword: inputKeyword });
     }
   };
 
@@ -116,18 +109,6 @@ export default function SearchBox({
           )}
         </div>
       )}
-
-      {/* search Box */}
-      {/* {searchType === 'samhwa' && (
-        <>
-          <div className='flex items-center text-lg text-[#9ba3af]'>SH - </div>
-          <input
-            type='text'
-            placeholder={searchGuide}
-            className='border-[1px] border-grey-100 focus:outline-none rounded px-2 grow bg-[#EEEEEE]'
-          ></input>
-        </>
-      )} */}
       {selectedType !== 'H V/C' && (
         <input
           type='text'
